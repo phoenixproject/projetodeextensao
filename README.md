@@ -1,5 +1,5 @@
 # projetodeextensao
-Disciplina de Projeto de Extensão 3 IFES/TSI
+-- Disciplina de Projeto de Extensão 3 IFES/TSI
 
 -- Integrantes da disciplina
 
