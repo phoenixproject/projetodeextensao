@@ -34,14 +34,13 @@ fun ServicoListScreen(
         )
     )
 ) {
-    // Se meiId for definido, busca serviços do MEI específico, caso contrário, busca todos
+
     val servicosState = if (meiId > 0) {
         viewModel.obterServicosPorMei(meiId).observeAsState(initial = emptyList())
     } else {
         viewModel.todosServicos.observeAsState(initial = emptyList())
     }
 
-    // Se tiver meiId, buscar informações do MEI para exibir no título
     val meiState = if (meiId > 0) {
         meiViewModel.obterMeiPorId(meiId).observeAsState()
     } else {
@@ -139,7 +138,7 @@ fun ServicoItem(
                     fontWeight = FontWeight.Bold
                 )
 
-                // Status Chip
+
                 Surface(
                     shape = RoundedCornerShape(16.dp),
                     color = when(servico.status) {

@@ -11,17 +11,21 @@ import kotlinx.coroutines.flow.Flow
 @Dao
 interface MeiDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun inserirMei(mei: MEI) // Removido o tipo de retorno Long
+    fun inserir(mei: MEI)
 
     @Update
-    suspend fun atualizarMei(mei: MEI) // Removido o tipo de retorno Int
+    fun atualizar(mei: MEI)
 
     @Delete
-    suspend fun deletarMei(mei: MEI) // Removido o tipo de retorno Int
+    fun deletar(mei: MEI)
 
     @Query("SELECT * FROM mei_table ORDER BY nome ASC")
-    fun obterTodosMei(): Flow<List<MEI>>
+    fun obterTodos(): Flow<List<MEI>>
 
     @Query("SELECT * FROM mei_table WHERE id = :id")
-    fun obterMeiPorId(id: Int): Flow<MEI>
+    fun obterPorId(id: Int): Flow<MEI>
+
+    @Query("SELECT COUNT(*) FROM mei_table WHERE id = :id")
+    fun contarPorId(id: Int): Int
+
 }
