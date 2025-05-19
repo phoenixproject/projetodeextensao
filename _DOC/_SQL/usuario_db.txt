@@ -1,0 +1,4 @@
+user: sysdb
+passwd: 123
+
+Scaffold-DbContext 'Server=localhost;Database=PROJETODEEXTENSAO;User Id=sysdb;Password=123;TrustServerCertificate=True;Encrypt=False' Microsoft.EntityFrameworkCore.SqlServer -OutputDir _MODEL\_SISTEMAS -force
