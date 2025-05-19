@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "8ZFAUl3uOhs=",
+  "dgSpecHash": "mCw9c/lSwBg=",
   "success": true,
-  "projectFilePath": "D:\\_SISTEMAS\\_DOTNET\\_IFES\\projetodeextensao\\ProjetoDeExtensao\\ProjetoDeExtensao.BlazorApp\\ProjetoDeExtensao.BlazorApp.Client\\ProjetoDeExtensao.BlazorApp.Client.csproj",
+  "projectFilePath": "D:\\_SISTEMAS\\_DOTNET\\_IFES\\projetodeextensao\\ProjetoDeExtensao.BlazorApp\\ProjetoDeExtensao.BlazorApp.Client\\ProjetoDeExtensao.BlazorApp.Client.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\pchan\\.nuget\\packages\\microsoft.aspnetcore.authorization\\8.0.16\\microsoft.aspnetcore.authorization.8.0.16.nupkg.sha512",
     "C:\\Users\\pchan\\.nuget\\packages\\microsoft.aspnetcore.components\\8.0.16\\microsoft.aspnetcore.components.8.0.16.nupkg.sha512",
