@@ -28,6 +28,22 @@ build_property.EnableCodeStyleSeverity =
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ291bnRlci5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
+[D:/_SISTEMAS/_DOTNET/_IFES/projetodeextensao/ProjetoDeExtensao.BlazorApp/ProjetoDeExtensao.BlazorApp.Client/Pages/GerenciarTiposServico.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcR2VyZW5jaWFyVGlwb3NTZXJ2aWNvLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/_SISTEMAS/_DOTNET/_IFES/projetodeextensao/ProjetoDeExtensao.BlazorApp/ProjetoDeExtensao.BlazorApp.Client/Pages/GerenciarUsuarios.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcR2VyZW5jaWFyVXN1YXJpb3MucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/_SISTEMAS/_DOTNET/_IFES/projetodeextensao/ProjetoDeExtensao.BlazorApp/ProjetoDeExtensao.BlazorApp.Client/Pages/Login.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTG9naW4ucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/_SISTEMAS/_DOTNET/_IFES/projetodeextensao/ProjetoDeExtensao.BlazorApp/ProjetoDeExtensao.BlazorApp.Client/Pages/MainPage.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTWFpblBhZ2UucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
 [D:/_SISTEMAS/_DOTNET/_IFES/projetodeextensao/ProjetoDeExtensao.BlazorApp/ProjetoDeExtensao.BlazorApp.Client/_Imports.razor]
 build_metadata.AdditionalFiles.TargetPath = X0ltcG9ydHMucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 

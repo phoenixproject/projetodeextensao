@@ -4,6 +4,8 @@ using ProjetoDeExtensao.BlazorApp._MODEL._SISTEMAS;
 
 namespace ProjetoDeExtensao.BlazorApp.Controllers._SISTEMA
 {
+	[Route("api/Status")]
+	[ApiController]
 	public class StatusController : Controller
 	{
 		private readonly ProjetodeextensaoContext _projetoextensao;

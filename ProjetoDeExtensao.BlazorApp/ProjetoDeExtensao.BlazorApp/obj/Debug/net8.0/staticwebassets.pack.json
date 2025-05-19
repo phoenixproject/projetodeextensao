@@ -9,6 +9,186 @@
       "PackagePath": "staticwebassets\\app.css"
     },
     {
+      "Id": "D:\\_SISTEMAS\\_DOTNET\\_IFES\\projetodeextensao\\ProjetoDeExtensao.BlazorApp\\ProjetoDeExtensao.BlazorApp\\wwwroot\\bootstrap-5.3.6-dist.zip",
+      "PackagePath": "staticwebassets\\bootstrap-5.3.6-dist.zip"
+    },
+    {
+      "Id": "D:\\_SISTEMAS\\_DOTNET\\_IFES\\projetodeextensao\\ProjetoDeExtensao.BlazorApp\\ProjetoDeExtensao.BlazorApp\\wwwroot\\bootstrap-5.3.6-dist\\css\\bootstrap-grid.css",
+      "PackagePath": "staticwebassets\\bootstrap-5.3.6-dist\\css\\bootstrap-grid.css"
+    },
+    {
+      "Id": "D:\\_SISTEMAS\\_DOTNET\\_IFES\\projetodeextensao\\ProjetoDeExtensao.BlazorApp\\ProjetoDeExtensao.BlazorApp\\wwwroot\\bootstrap-5.3.6-dist\\css\\bootstrap-grid.css.map",
+      "PackagePath": "staticwebassets\\bootstrap-5.3.6-dist\\css\\bootstrap-grid.css.map"
+    },
+    {
+      "Id": "D:\\_SISTEMAS\\_DOTNET\\_IFES\\projetodeextensao\\ProjetoDeExtensao.BlazorApp\\ProjetoDeExtensao.BlazorApp\\wwwroot\\bootstrap-5.3.6-dist\\css\\bootstrap-grid.min.css",
+      "PackagePath": "staticwebassets\\bootstrap-5.3.6-dist\\css\\bootstrap-grid.min.css"
+    },
+    {
+      "Id": "D:\\_SISTEMAS\\_DOTNET\\_IFES\\projetodeextensao\\ProjetoDeExtensao.BlazorApp\\ProjetoDeExtensao.BlazorApp\\wwwroot\\bootstrap-5.3.6-dist\\css\\bootstrap-grid.min.css.map",
+      "PackagePath": "staticwebassets\\bootstrap-5.3.6-dist\\css\\bootstrap-grid.min.css.map"
+    },
+    {
+      "Id": "D:\\_SISTEMAS\\_DOTNET\\_IFES\\projetodeextensao\\ProjetoDeExtensao.BlazorApp\\ProjetoDeExtensao.BlazorApp\\wwwroot\\bootstrap-5.3.6-dist\\css\\bootstrap-grid.rtl.css",
+      "PackagePath": "staticwebassets\\bootstrap-5.3.6-dist\\css\\bootstrap-grid.rtl.css"
+    },
+    {
+      "Id": "D:\\_SISTEMAS\\_DOTNET\\_IFES\\projetodeextensao\\ProjetoDeExtensao.BlazorApp\\ProjetoDeExtensao.BlazorApp\\wwwroot\\bootstrap-5.3.6-dist\\css\\bootstrap-grid.rtl.css.map",
+      "PackagePath": "staticwebassets\\bootstrap-5.3.6-dist\\css\\bootstrap-grid.rtl.css.map"
+    },
+    {
+      "Id": "D:\\_SISTEMAS\\_DOTNET\\_IFES\\projetodeextensao\\ProjetoDeExtensao.BlazorApp\\ProjetoDeExtensao.BlazorApp\\wwwroot\\bootstrap-5.3.6-dist\\css\\bootstrap-grid.rtl.min.css",
+      "PackagePath": "staticwebassets\\bootstrap-5.3.6-dist\\css\\bootstrap-grid.rtl.min.css"
+    },
+    {
+      "Id": "D:\\_SISTEMAS\\_DOTNET\\_IFES\\projetodeextensao\\ProjetoDeExtensao.BlazorApp\\ProjetoDeExtensao.BlazorApp\\wwwroot\\bootstrap-5.3.6-dist\\css\\bootstrap-grid.rtl.min.css.map",
+      "PackagePath": "staticwebassets\\bootstrap-5.3.6-dist\\css\\bootstrap-grid.rtl.min.css.map"
+    },
+    {
+      "Id": "D:\\_SISTEMAS\\_DOTNET\\_IFES\\projetodeextensao\\ProjetoDeExtensao.BlazorApp\\ProjetoDeExtensao.BlazorApp\\wwwroot\\bootstrap-5.3.6-dist\\css\\bootstrap-reboot.css",
+      "PackagePath": "staticwebassets\\bootstrap-5.3.6-dist\\css\\bootstrap-reboot.css"
+    },
+    {
+      "Id": "D:\\_SISTEMAS\\_DOTNET\\_IFES\\projetodeextensao\\ProjetoDeExtensao.BlazorApp\\ProjetoDeExtensao.BlazorApp\\wwwroot\\bootstrap-5.3.6-dist\\css\\bootstrap-reboot.css.map",
+      "PackagePath": "staticwebassets\\bootstrap-5.3.6-dist\\css\\bootstrap-reboot.css.map"
+    },
+    {
+      "Id": "D:\\_SISTEMAS\\_DOTNET\\_IFES\\projetodeextensao\\ProjetoDeExtensao.BlazorApp\\ProjetoDeExtensao.BlazorApp\\wwwroot\\bootstrap-5.3.6-dist\\css\\bootstrap-reboot.min.css",
+      "PackagePath": "staticwebassets\\bootstrap-5.3.6-dist\\css\\bootstrap-reboot.min.css"
+    },
+    {
+      "Id": "D:\\_SISTEMAS\\_DOTNET\\_IFES\\projetodeextensao\\ProjetoDeExtensao.BlazorApp\\ProjetoDeExtensao.BlazorApp\\wwwroot\\bootstrap-5.3.6-dist\\css\\bootstrap-reboot.min.css.map",
+      "PackagePath": "staticwebassets\\bootstrap-5.3.6-dist\\css\\bootstrap-reboot.min.css.map"
+    },
+    {
+      "Id": "D:\\_SISTEMAS\\_DOTNET\\_IFES\\projetodeextensao\\ProjetoDeExtensao.BlazorApp\\ProjetoDeExtensao.BlazorApp\\wwwroot\\bootstrap-5.3.6-dist\\css\\bootstrap-reboot.rtl.css",
+      "PackagePath": "staticwebassets\\bootstrap-5.3.6-dist\\css\\bootstrap-reboot.rtl.css"
+    },
+    {
+      "Id": "D:\\_SISTEMAS\\_DOTNET\\_IFES\\projetodeextensao\\ProjetoDeExtensao.BlazorApp\\ProjetoDeExtensao.BlazorApp\\wwwroot\\bootstrap-5.3.6-dist\\css\\bootstrap-reboot.rtl.css.map",
+      "PackagePath": "staticwebassets\\bootstrap-5.3.6-dist\\css\\bootstrap-reboot.rtl.css.map"
+    },
+    {
+      "Id": "D:\\_SISTEMAS\\_DOTNET\\_IFES\\projetodeextensao\\ProjetoDeExtensao.BlazorApp\\ProjetoDeExtensao.BlazorApp\\wwwroot\\bootstrap-5.3.6-dist\\css\\bootstrap-reboot.rtl.min.css",
+      "PackagePath": "staticwebassets\\bootstrap-5.3.6-dist\\css\\bootstrap-reboot.rtl.min.css"
+    },
+    {
+      "Id": "D:\\_SISTEMAS\\_DOTNET\\_IFES\\projetodeextensao\\ProjetoDeExtensao.BlazorApp\\ProjetoDeExtensao.BlazorApp\\wwwroot\\bootstrap-5.3.6-dist\\css\\bootstrap-reboot.rtl.min.css.map",
+      "PackagePath": "staticwebassets\\bootstrap-5.3.6-dist\\css\\bootstrap-reboot.rtl.min.css.map"
+    },
+    {
+      "Id": "D:\\_SISTEMAS\\_DOTNET\\_IFES\\projetodeextensao\\ProjetoDeExtensao.BlazorApp\\ProjetoDeExtensao.BlazorApp\\wwwroot\\bootstrap-5.3.6-dist\\css\\bootstrap-utilities.css",
+      "PackagePath": "staticwebassets\\bootstrap-5.3.6-dist\\css\\bootstrap-utilities.css"
+    },
+    {
+      "Id": "D:\\_SISTEMAS\\_DOTNET\\_IFES\\projetodeextensao\\ProjetoDeExtensao.BlazorApp\\ProjetoDeExtensao.BlazorApp\\wwwroot\\bootstrap-5.3.6-dist\\css\\bootstrap-utilities.css.map",
+      "PackagePath": "staticwebassets\\bootstrap-5.3.6-dist\\css\\bootstrap-utilities.css.map"
+    },
+    {
+      "Id": "D:\\_SISTEMAS\\_DOTNET\\_IFES\\projetodeextensao\\ProjetoDeExtensao.BlazorApp\\ProjetoDeExtensao.BlazorApp\\wwwroot\\bootstrap-5.3.6-dist\\css\\bootstrap-utilities.min.css",
+      "PackagePath": "staticwebassets\\bootstrap-5.3.6-dist\\css\\bootstrap-utilities.min.css"
+    },
+    {
+      "Id": "D:\\_SISTEMAS\\_DOTNET\\_IFES\\projetodeextensao\\ProjetoDeExtensao.BlazorApp\\ProjetoDeExtensao.BlazorApp\\wwwroot\\bootstrap-5.3.6-dist\\css\\bootstrap-utilities.min.css.map",
+      "PackagePath": "staticwebassets\\bootstrap-5.3.6-dist\\css\\bootstrap-utilities.min.css.map"
+    },
+    {
+      "Id": "D:\\_SISTEMAS\\_DOTNET\\_IFES\\projetodeextensao\\ProjetoDeExtensao.BlazorApp\\ProjetoDeExtensao.BlazorApp\\wwwroot\\bootstrap-5.3.6-dist\\css\\bootstrap-utilities.rtl.css",
+      "PackagePath": "staticwebassets\\bootstrap-5.3.6-dist\\css\\bootstrap-utilities.rtl.css"
+    },
+    {
+      "Id": "D:\\_SISTEMAS\\_DOTNET\\_IFES\\projetodeextensao\\ProjetoDeExtensao.BlazorApp\\ProjetoDeExtensao.BlazorApp\\wwwroot\\bootstrap-5.3.6-dist\\css\\bootstrap-utilities.rtl.css.map",
+      "PackagePath": "staticwebassets\\bootstrap-5.3.6-dist\\css\\bootstrap-utilities.rtl.css.map"
+    },
+    {
+      "Id": "D:\\_SISTEMAS\\_DOTNET\\_IFES\\projetodeextensao\\ProjetoDeExtensao.BlazorApp\\ProjetoDeExtensao.BlazorApp\\wwwroot\\bootstrap-5.3.6-dist\\css\\bootstrap-utilities.rtl.min.css",
+      "PackagePath": "staticwebassets\\bootstrap-5.3.6-dist\\css\\bootstrap-utilities.rtl.min.css"
+    },
+    {
+      "Id": "D:\\_SISTEMAS\\_DOTNET\\_IFES\\projetodeextensao\\ProjetoDeExtensao.BlazorApp\\ProjetoDeExtensao.BlazorApp\\wwwroot\\bootstrap-5.3.6-dist\\css\\bootstrap-utilities.rtl.min.css.map",
+      "PackagePath": "staticwebassets\\bootstrap-5.3.6-dist\\css\\bootstrap-utilities.rtl.min.css.map"
+    },
+    {
+      "Id": "D:\\_SISTEMAS\\_DOTNET\\_IFES\\projetodeextensao\\ProjetoDeExtensao.BlazorApp\\ProjetoDeExtensao.BlazorApp\\wwwroot\\bootstrap-5.3.6-dist\\css\\bootstrap.css",
+      "PackagePath": "staticwebassets\\bootstrap-5.3.6-dist\\css\\bootstrap.css"
+    },
+    {
+      "Id": "D:\\_SISTEMAS\\_DOTNET\\_IFES\\projetodeextensao\\ProjetoDeExtensao.BlazorApp\\ProjetoDeExtensao.BlazorApp\\wwwroot\\bootstrap-5.3.6-dist\\css\\bootstrap.css.map",
+      "PackagePath": "staticwebassets\\bootstrap-5.3.6-dist\\css\\bootstrap.css.map"
+    },
+    {
+      "Id": "D:\\_SISTEMAS\\_DOTNET\\_IFES\\projetodeextensao\\ProjetoDeExtensao.BlazorApp\\ProjetoDeExtensao.BlazorApp\\wwwroot\\bootstrap-5.3.6-dist\\css\\bootstrap.min.css",
+      "PackagePath": "staticwebassets\\bootstrap-5.3.6-dist\\css\\bootstrap.min.css"
+    },
+    {
+      "Id": "D:\\_SISTEMAS\\_DOTNET\\_IFES\\projetodeextensao\\ProjetoDeExtensao.BlazorApp\\ProjetoDeExtensao.BlazorApp\\wwwroot\\bootstrap-5.3.6-dist\\css\\bootstrap.min.css.map",
+      "PackagePath": "staticwebassets\\bootstrap-5.3.6-dist\\css\\bootstrap.min.css.map"
+    },
+    {
+      "Id": "D:\\_SISTEMAS\\_DOTNET\\_IFES\\projetodeextensao\\ProjetoDeExtensao.BlazorApp\\ProjetoDeExtensao.BlazorApp\\wwwroot\\bootstrap-5.3.6-dist\\css\\bootstrap.rtl.css",
+      "PackagePath": "staticwebassets\\bootstrap-5.3.6-dist\\css\\bootstrap.rtl.css"
+    },
+    {
+      "Id": "D:\\_SISTEMAS\\_DOTNET\\_IFES\\projetodeextensao\\ProjetoDeExtensao.BlazorApp\\ProjetoDeExtensao.BlazorApp\\wwwroot\\bootstrap-5.3.6-dist\\css\\bootstrap.rtl.css.map",
+      "PackagePath": "staticwebassets\\bootstrap-5.3.6-dist\\css\\bootstrap.rtl.css.map"
+    },
+    {
+      "Id": "D:\\_SISTEMAS\\_DOTNET\\_IFES\\projetodeextensao\\ProjetoDeExtensao.BlazorApp\\ProjetoDeExtensao.BlazorApp\\wwwroot\\bootstrap-5.3.6-dist\\css\\bootstrap.rtl.min.css",
+      "PackagePath": "staticwebassets\\bootstrap-5.3.6-dist\\css\\bootstrap.rtl.min.css"
+    },
+    {
+      "Id": "D:\\_SISTEMAS\\_DOTNET\\_IFES\\projetodeextensao\\ProjetoDeExtensao.BlazorApp\\ProjetoDeExtensao.BlazorApp\\wwwroot\\bootstrap-5.3.6-dist\\css\\bootstrap.rtl.min.css.map",
+      "PackagePath": "staticwebassets\\bootstrap-5.3.6-dist\\css\\bootstrap.rtl.min.css.map"
+    },
+    {
+      "Id": "D:\\_SISTEMAS\\_DOTNET\\_IFES\\projetodeextensao\\ProjetoDeExtensao.BlazorApp\\ProjetoDeExtensao.BlazorApp\\wwwroot\\bootstrap-5.3.6-dist\\js\\bootstrap.bundle.js",
+      "PackagePath": "staticwebassets\\bootstrap-5.3.6-dist\\js\\bootstrap.bundle.js"
+    },
+    {
+      "Id": "D:\\_SISTEMAS\\_DOTNET\\_IFES\\projetodeextensao\\ProjetoDeExtensao.BlazorApp\\ProjetoDeExtensao.BlazorApp\\wwwroot\\bootstrap-5.3.6-dist\\js\\bootstrap.bundle.js.map",
+      "PackagePath": "staticwebassets\\bootstrap-5.3.6-dist\\js\\bootstrap.bundle.js.map"
+    },
+    {
+      "Id": "D:\\_SISTEMAS\\_DOTNET\\_IFES\\projetodeextensao\\ProjetoDeExtensao.BlazorApp\\ProjetoDeExtensao.BlazorApp\\wwwroot\\bootstrap-5.3.6-dist\\js\\bootstrap.bundle.min.js",
+      "PackagePath": "staticwebassets\\bootstrap-5.3.6-dist\\js\\bootstrap.bundle.min.js"
+    },
+    {
+      "Id": "D:\\_SISTEMAS\\_DOTNET\\_IFES\\projetodeextensao\\ProjetoDeExtensao.BlazorApp\\ProjetoDeExtensao.BlazorApp\\wwwroot\\bootstrap-5.3.6-dist\\js\\bootstrap.bundle.min.js.map",
+      "PackagePath": "staticwebassets\\bootstrap-5.3.6-dist\\js\\bootstrap.bundle.min.js.map"
+    },
+    {
+      "Id": "D:\\_SISTEMAS\\_DOTNET\\_IFES\\projetodeextensao\\ProjetoDeExtensao.BlazorApp\\ProjetoDeExtensao.BlazorApp\\wwwroot\\bootstrap-5.3.6-dist\\js\\bootstrap.esm.js",
+      "PackagePath": "staticwebassets\\bootstrap-5.3.6-dist\\js\\bootstrap.esm.js"
+    },
+    {
+      "Id": "D:\\_SISTEMAS\\_DOTNET\\_IFES\\projetodeextensao\\ProjetoDeExtensao.BlazorApp\\ProjetoDeExtensao.BlazorApp\\wwwroot\\bootstrap-5.3.6-dist\\js\\bootstrap.esm.js.map",
+      "PackagePath": "staticwebassets\\bootstrap-5.3.6-dist\\js\\bootstrap.esm.js.map"
+    },
+    {
+      "Id": "D:\\_SISTEMAS\\_DOTNET\\_IFES\\projetodeextensao\\ProjetoDeExtensao.BlazorApp\\ProjetoDeExtensao.BlazorApp\\wwwroot\\bootstrap-5.3.6-dist\\js\\bootstrap.esm.min.js",
+      "PackagePath": "staticwebassets\\bootstrap-5.3.6-dist\\js\\bootstrap.esm.min.js"
+    },
+    {
+      "Id": "D:\\_SISTEMAS\\_DOTNET\\_IFES\\projetodeextensao\\ProjetoDeExtensao.BlazorApp\\ProjetoDeExtensao.BlazorApp\\wwwroot\\bootstrap-5.3.6-dist\\js\\bootstrap.esm.min.js.map",
+      "PackagePath": "staticwebassets\\bootstrap-5.3.6-dist\\js\\bootstrap.esm.min.js.map"
+    },
+    {
+      "Id": "D:\\_SISTEMAS\\_DOTNET\\_IFES\\projetodeextensao\\ProjetoDeExtensao.BlazorApp\\ProjetoDeExtensao.BlazorApp\\wwwroot\\bootstrap-5.3.6-dist\\js\\bootstrap.js",
+      "PackagePath": "staticwebassets\\bootstrap-5.3.6-dist\\js\\bootstrap.js"
+    },
+    {
+      "Id": "D:\\_SISTEMAS\\_DOTNET\\_IFES\\projetodeextensao\\ProjetoDeExtensao.BlazorApp\\ProjetoDeExtensao.BlazorApp\\wwwroot\\bootstrap-5.3.6-dist\\js\\bootstrap.js.map",
+      "PackagePath": "staticwebassets\\bootstrap-5.3.6-dist\\js\\bootstrap.js.map"
+    },
+    {
+      "Id": "D:\\_SISTEMAS\\_DOTNET\\_IFES\\projetodeextensao\\ProjetoDeExtensao.BlazorApp\\ProjetoDeExtensao.BlazorApp\\wwwroot\\bootstrap-5.3.6-dist\\js\\bootstrap.min.js",
+      "PackagePath": "staticwebassets\\bootstrap-5.3.6-dist\\js\\bootstrap.min.js"
+    },
+    {
+      "Id": "D:\\_SISTEMAS\\_DOTNET\\_IFES\\projetodeextensao\\ProjetoDeExtensao.BlazorApp\\ProjetoDeExtensao.BlazorApp\\wwwroot\\bootstrap-5.3.6-dist\\js\\bootstrap.min.js.map",
+      "PackagePath": "staticwebassets\\bootstrap-5.3.6-dist\\js\\bootstrap.min.js.map"
+    },
+    {
       "Id": "D:\\_SISTEMAS\\_DOTNET\\_IFES\\projetodeextensao\\ProjetoDeExtensao.BlazorApp\\ProjetoDeExtensao.BlazorApp\\wwwroot\\bootstrap\\bootstrap.min.css",
       "PackagePath": "staticwebassets\\bootstrap\\bootstrap.min.css"
     },
@@ -19,6 +199,14 @@
     {
       "Id": "D:\\_SISTEMAS\\_DOTNET\\_IFES\\projetodeextensao\\ProjetoDeExtensao.BlazorApp\\ProjetoDeExtensao.BlazorApp\\wwwroot\\favicon.png",
       "PackagePath": "staticwebassets\\favicon.png"
+    },
+    {
+      "Id": "D:\\_SISTEMAS\\_DOTNET\\_IFES\\projetodeextensao\\ProjetoDeExtensao.BlazorApp\\ProjetoDeExtensao.BlazorApp\\wwwroot\\images\\logo-baixo-guandu.png",
+      "PackagePath": "staticwebassets\\images\\logo-baixo-guandu.png"
+    },
+    {
+      "Id": "D:\\_SISTEMAS\\_DOTNET\\_IFES\\projetodeextensao\\ProjetoDeExtensao.BlazorApp\\ProjetoDeExtensao.BlazorApp\\wwwroot\\styles.css",
+      "PackagePath": "staticwebassets\\styles.css"
     },
     {
       "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.ProjetoDeExtensao.BlazorApp.Microsoft.AspNetCore.StaticWebAssetEndpoints.props",

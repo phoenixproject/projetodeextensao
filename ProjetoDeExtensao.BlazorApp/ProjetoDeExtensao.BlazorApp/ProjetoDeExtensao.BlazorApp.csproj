@@ -7,6 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\ProjetoDeExtensao.Shared\ProjetoDeExtensao.Shared.csproj" />
     <ProjectReference Include="..\ProjetoDeExtensao.BlazorApp.Client\ProjetoDeExtensao.BlazorApp.Client.csproj" />
     <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="8.0.16" />
     <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.Server" Version="8.0.16" />
@@ -20,10 +21,6 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Controllers\__AUTENTICACAO\" />
   </ItemGroup>
 
 </Project>

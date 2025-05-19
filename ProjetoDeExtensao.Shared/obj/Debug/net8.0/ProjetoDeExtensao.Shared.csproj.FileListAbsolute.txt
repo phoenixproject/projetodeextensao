@@ -1,0 +1,12 @@
+D:\_SISTEMAS\_DOTNET\_IFES\projetodeextensao\ProjetoDeExtensao.Shared\bin\Debug\net8.0\ProjetoDeExtensao.Shared.deps.json
+D:\_SISTEMAS\_DOTNET\_IFES\projetodeextensao\ProjetoDeExtensao.Shared\bin\Debug\net8.0\ProjetoDeExtensao.Shared.dll
+D:\_SISTEMAS\_DOTNET\_IFES\projetodeextensao\ProjetoDeExtensao.Shared\bin\Debug\net8.0\ProjetoDeExtensao.Shared.pdb
+D:\_SISTEMAS\_DOTNET\_IFES\projetodeextensao\ProjetoDeExtensao.Shared\obj\Debug\net8.0\ProjetoDeExtensao.Shared.GeneratedMSBuildEditorConfig.editorconfig
+D:\_SISTEMAS\_DOTNET\_IFES\projetodeextensao\ProjetoDeExtensao.Shared\obj\Debug\net8.0\ProjetoDeExtensao.Shared.AssemblyInfoInputs.cache
+D:\_SISTEMAS\_DOTNET\_IFES\projetodeextensao\ProjetoDeExtensao.Shared\obj\Debug\net8.0\ProjetoDeExtensao.Shared.AssemblyInfo.cs
+D:\_SISTEMAS\_DOTNET\_IFES\projetodeextensao\ProjetoDeExtensao.Shared\obj\Debug\net8.0\ProjetoDeExtensao.Shared.csproj.CoreCompileInputs.cache
+D:\_SISTEMAS\_DOTNET\_IFES\projetodeextensao\ProjetoDeExtensao.Shared\obj\Debug\net8.0\ProjetoDeExtensao.Shared.sourcelink.json
+D:\_SISTEMAS\_DOTNET\_IFES\projetodeextensao\ProjetoDeExtensao.Shared\obj\Debug\net8.0\ProjetoDeExtensao.Shared.dll
+D:\_SISTEMAS\_DOTNET\_IFES\projetodeextensao\ProjetoDeExtensao.Shared\obj\Debug\net8.0\refint\ProjetoDeExtensao.Shared.dll
+D:\_SISTEMAS\_DOTNET\_IFES\projetodeextensao\ProjetoDeExtensao.Shared\obj\Debug\net8.0\ProjetoDeExtensao.Shared.pdb
+D:\_SISTEMAS\_DOTNET\_IFES\projetodeextensao\ProjetoDeExtensao.Shared\obj\Debug\net8.0\ref\ProjetoDeExtensao.Shared.dll

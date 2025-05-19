@@ -32,6 +32,11 @@ namespace ProjetoDeExtensao.BlazorApp._REPOSITORIO
 			return Contexto.Usuarios.Where(l => l.Email.Equals(email)).FirstOrDefault();
 		}
 
+		public Usuario ObterUsuarioPorEmailESenha(string email, string password)
+		{
+			return Contexto.Usuarios.Where(l => l.Email.Equals(email) && l.Password.Equals(password)).FirstOrDefault();
+		}
+
 		public bool VerificarSeUsuarioComMesmoEmailJaExiste(Usuario usuario)
 		{
 			if (Contexto.Usuarios.Where(l => l.Email.Equals(usuario.Email)).Count() > 0)

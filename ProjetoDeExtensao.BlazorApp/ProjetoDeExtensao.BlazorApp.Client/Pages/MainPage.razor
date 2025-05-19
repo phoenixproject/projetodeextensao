@@ -1,0 +1,241 @@
+@page "/"
+@using System.Net.Http.Json
+@using System.Text.Json
+@inject HttpClient Http
+@inject NavigationManager NavigationManager
+@inject IJSRuntime JSRuntime
+
+
+<div class="container-fluid px-0">
+    <!-- Cabeçalho com logo e nome do sistema -->
+    <header class="bg-primary text-white py-3">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-md-2 col-sm-3 text-center text-sm-start mb-2 mb-sm-0">
+                    <img src="images/logo-baixo-guandu.png" alt="Logo Baixo Guandú" class="img-fluid" style="max-height: 80px;" />
+                </div>
+                <div class="col-md-8 col-sm-6 text-center text-sm-start">
+                    <h1 class="h3 mb-0">Serviços Baixo Guandú</h1>
+                    <p class="mb-0 d-none d-sm-block">Encontre profissionais qualificados para seus serviços</p>
+                </div>
+                <div class="col-md-2 col-sm-3 text-center text-sm-end mt-2 mt-sm-0">
+                    @if (IsAuthenticated())
+                    {
+                        <div class="dropdown">
+                            <button class="btn btn-light dropdown-toggle" type="button" id="userMenu" data-bs-toggle="dropdown" aria-expanded="false">
+                                <i class="bi bi-person-circle me-1"></i> @GetUserName()
+                            </button>
+                            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userMenu">
+                                <li><a class="dropdown-item" href="/gerenciar-usuarios">Gerenciar Usuários</a></li>
+                                <li><a class="dropdown-item" href="/gerenciar-tipos-servico">Gerenciar Tipos de Serviço</a></li>
+                                <li><hr class="dropdown-divider"></li>
+                                <li><button class="dropdown-item" @onclick="Logout">Sair</button></li>
+                            </ul>
+                        </div>
+                    }
+                    else
+                    {
+                        <a href="/login" class="btn btn-light">
+                            <i class="bi bi-box-arrow-in-right me-1"></i> Entrar
+                        </a>
+                    }
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Banner principal com imagem de Baixo Guandú -->
+    <div class="position-relative">
+        <div class="bg-image" style="background-image: url('images/baixo-guandu-banner.jpg'); height: 300px; background-size: cover; background-position: center;"></div>
+        <div class="position-absolute top-0 start-0 w-100 h-100 d-flex align-items-center justify-content-center" style="background-color: rgba(0,0,0,0.4);">
+            <div class="container text-center text-white">
+                <h2 class="display-5 fw-bold mb-4">Encontre Profissionais em Baixo Guandú</h2>
+                <div class="row justify-content-center">
+                    <div class="col-md-8">
+                        <div class="input-group mb-3">
+                            <select class="form-select" @bind="tipoServicoSelecionado">
+                                <option value="0">Selecione um tipo de serviço...</option>
+                                @if (tiposServico != null)
+                                {
+                                    @foreach (var tipo in tiposServico)
+                                    {
+                                        <option value="@tipo.TpServico">@tipo.DsTpServico</option>
+                                    }
+                                }
+                            </select>
+                            <button class="btn btn-success" type="button" @onclick="BuscarProfissionais">
+                                <i class="bi bi-search me-1"></i> Buscar
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Conteúdo principal - Resultados da busca -->
+    <div class="container py-5">
+        @if (mensagemErro != null)
+        {
+            <div class="alert alert-danger" role="alert">
+                @mensagemErro
+            </div>
+        }
+
+        @if (buscaRealizada && profissionais.Count == 0)
+        {
+            <div class="alert alert-info" role="alert">
+                Nenhum profissional encontrado para o tipo de serviço selecionado.
+            </div>
+        }
+
+        @if (profissionais.Count > 0)
+        {
+            <h3 class="mb-4">Profissionais Encontrados</h3>
+            <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+                @foreach (var profissional in profissionais)
+                {
+                    <div class="col">
+                        <div class="card h-100 shadow-sm">
+                            <div class="card-body">
+                                <div class="d-flex align-items-center mb-3">
+                                    <div class="avatar bg-primary text-white rounded-circle d-flex align-items-center justify-content-center me-3" style="width: 50px; height: 50px;">
+                                        <span class="h5 mb-0">@profissional.Nome.Substring(0, 1).ToUpper()</span>
+                                    </div>
+                                    <div>
+                                        <h5 class="card-title mb-0">@profissional.Nome</h5>
+                                        <p class="card-text text-muted small mb-0">@GetTipoServicoDescricao(profissional.TpServico)</p>
+                                    </div>
+                                </div>
+                                <hr />
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div>
+                                        <i class="bi bi-telephone me-2"></i>
+                                        <span>@FormatarTelefone(profissional.Telefone)</span>
+                                    </div>
+                                    <div>
+                                        <i class="bi bi-envelope me-2"></i>
+                                        <span>@profissional.Email</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        }
+        else if (!buscaRealizada)
+        {
+            <div class="text-center py-5">
+                <img src="images/search-illustration.svg" alt="Busca" class="img-fluid mb-4" style="max-height: 200px;" />
+                <h3>Selecione um tipo de serviço para encontrar profissionais</h3>
+                <p class="text-muted">Escolha o tipo de serviço desejado e clique em buscar para encontrar profissionais em Baixo Guandú.</p>
+            </div>
+        }
+    </div>
+
+    <!-- Rodapé -->
+    <footer class="bg-dark text-white py-4">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 mb-3 mb-md-0">
+                    <h5>Serviços Baixo Guandú</h5>
+                    <p class="mb-0">Conectando você aos melhores profissionais da cidade.</p>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <p class="mb-0">&copy; 2025 Prefeitura de Baixo Guandú - ES</p>
+                    <p class="mb-0 small">Todos os direitos reservados</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+</div>
+
+@code {
+    private List<TipoServicoDTO> tiposServico = new List<TipoServicoDTO>();
+    private List<UsuarioDTO> profissionais = new List<UsuarioDTO>();
+    private int tipoServicoSelecionado = 0;
+    private string mensagemErro = null;
+    private bool buscaRealizada = false;
+
+    protected override async Task OnInitializedAsync()
+    {
+        try
+        {
+            tiposServico = await Http.GetFromJsonAsync<List<TipoServicoDTO>>("https://localhost:7240/api/TipoServico");
+        }
+        catch (Exception ex)
+        {
+            mensagemErro = $"Erro ao carregar tipos de serviço: {ex.Message}";
+        }
+    }
+
+    private async Task BuscarProfissionais()
+    {
+        if (tipoServicoSelecionado == 0)
+        {
+            mensagemErro = "Por favor, selecione um tipo de serviço.";
+            return;
+        }
+
+        mensagemErro = null;
+        buscaRealizada = true;
+
+        try
+        {
+            var todosUsuarios = await Http.GetFromJsonAsync<List<Shared._MODEL.UsuarioDTO>>("https://localhost:7240/api/Usuario");
+            profissionais = todosUsuarios
+                .Where(u => u.TpServico == tipoServicoSelecionado && u.CdStatus == 1) // Assumindo que status 1 é ativo
+                .ToList();
+        }
+        catch (Exception ex)
+        {
+            mensagemErro = $"Erro ao buscar profissionais: {ex.Message}";
+            profissionais.Clear();
+        }
+    }
+
+    private string GetTipoServicoDescricao(int tipoServicoId)
+    {
+        var tipoServico = tiposServico.FirstOrDefault(t => t.TpServico == tipoServicoId);
+        return tipoServico?.DsTpServico ?? "Serviço não especificado";
+    }
+
+    private string FormatarTelefone(string telefone)
+    {
+        if (string.IsNullOrEmpty(telefone))
+            return "";
+
+        // Remover caracteres não numéricos
+        var numeros = new string(telefone.Where(char.IsDigit).ToArray());
+
+        // Formatar conforme o padrão brasileiro
+        if (numeros.Length == 11) // Celular com DDD
+            return $"({numeros.Substring(0, 2)}) {numeros.Substring(2, 5)}-{numeros.Substring(7)}";
+        else if (numeros.Length == 10) // Fixo com DDD
+            return $"({numeros.Substring(0, 2)}) {numeros.Substring(2, 4)}-{numeros.Substring(6)}";
+        else
+            return telefone; // Retorna original se não conseguir formatar
+    }
+
+    private bool IsAuthenticated()
+    {
+        // Verificar se existe token no localStorage (implementação real seria feita via JSInterop)
+        return false; // Placeholder - será implementado com JSInterop
+    }
+
+    private string GetUserName()
+    {
+        // Obter nome do usuário do localStorage (implementação real seria feita via JSInterop)
+        return "Usuário"; // Placeholder - será implementado com JSInterop
+    }
+
+    private async Task Logout()
+    {
+        // Limpar localStorage e redirecionar (implementação real seria feita via JSInterop)
+        await JSRuntime.InvokeVoidAsync("localStorage.removeItem", "auth_token");
+        await JSRuntime.InvokeVoidAsync("localStorage.removeItem", "user_name");
+        await JSRuntime.InvokeVoidAsync("localStorage.removeItem", "user_type");
+        NavigationManager.NavigateTo("/", true);
+    }
+}

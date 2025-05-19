@@ -2,6 +2,7 @@
 using Microsoft.Extensions.Configuration;
 using ProjetoDeExtensao.BlazorApp._MODEL._SISTEMAS;
 using ProjetoDeExtensao.BlazorApp._REPOSITORIO;
+using ProjetoDeExtensao.Shared._MODEL;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,19 +21,38 @@ namespace ProjetoDeExtensao.BlazorApp._APLICACAO
 			this.RepositorioDeTipoDeUsuario = new RepositorioDeTipoDeUsuario(projetoextensao);
 		}
 
-		public TipoUsuario ObterTipoDeUsuarioPorId(int id)
+		public TipoUsuarioDTO ConverterParaTipoDeUsuarioDTO(TipoUsuario tipoUsuario)
 		{
-			return RepositorioDeTipoDeUsuario.ObterTipoDeUsuarioPorId(id);
+			return new TipoUsuarioDTO
+			{
+				TpUsuario = tipoUsuario.TpUsuario,
+				DsTpUsuario = tipoUsuario.DsTpUsuario
+			};
 		}
 
-		public List<TipoUsuario> ObterTodosOsTiposDeUsuarios()
+		public List<TipoUsuarioDTO> ConverterListaDeTipoDeUsuarioParaFormatoDTO(List<TipoUsuario> listaDeTipoDeUsuario)
 		{
-			return RepositorioDeTipoDeUsuario.ObterTodosOsTiposDeUsuarios();
+			List<TipoUsuarioDTO> listaDeTipoDeUsuarioDTO = new List<TipoUsuarioDTO>();
+			foreach (var tipoUsuario in listaDeTipoDeUsuario)
+			{
+				listaDeTipoDeUsuarioDTO.Add(ConverterParaTipoDeUsuarioDTO(tipoUsuario));
+			}
+			return listaDeTipoDeUsuarioDTO;
 		}
 
-		public TipoUsuario ObterTipoDeUsuarioPorDescricao(string descricao)
+		public TipoUsuarioDTO ObterTipoDeUsuarioPorId(int id)
 		{
-			return RepositorioDeTipoDeUsuario.ObterTipoDeUsuarioPorDescricao(descricao);
+			return ConverterParaTipoDeUsuarioDTO(RepositorioDeTipoDeUsuario.ObterTipoDeUsuarioPorId(id));
+		}
+
+		public List<TipoUsuarioDTO> ObterTodosOsTiposDeUsuarios()
+		{
+			return ConverterListaDeTipoDeUsuarioParaFormatoDTO(RepositorioDeTipoDeUsuario.ObterTodosOsTiposDeUsuarios());
+		}
+
+		public TipoUsuarioDTO ObterTipoDeUsuarioPorDescricao(string descricao)
+		{
+			return ConverterParaTipoDeUsuarioDTO(RepositorioDeTipoDeUsuario.ObterTipoDeUsuarioPorDescricao(descricao));
 		}
 
 		public bool VerificarSeTipoDeUsuarioComMesmoEmailJaExiste(TipoUsuario tipoUsuario)

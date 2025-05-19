@@ -23,6 +23,7 @@ D:\_SISTEMAS\_DOTNET\_IFES\projetodeextensao\ProjetoDeExtensao.BlazorApp\Projeto
 D:\_SISTEMAS\_DOTNET\_IFES\projetodeextensao\ProjetoDeExtensao.BlazorApp\ProjetoDeExtensao.BlazorApp\bin\Debug\net8.0\Azure.Core.dll
 D:\_SISTEMAS\_DOTNET\_IFES\projetodeextensao\ProjetoDeExtensao.BlazorApp\ProjetoDeExtensao.BlazorApp\bin\Debug\net8.0\Azure.Identity.dll
 D:\_SISTEMAS\_DOTNET\_IFES\projetodeextensao\ProjetoDeExtensao.BlazorApp\ProjetoDeExtensao.BlazorApp\bin\Debug\net8.0\Humanizer.dll
+D:\_SISTEMAS\_DOTNET\_IFES\projetodeextensao\ProjetoDeExtensao.BlazorApp\ProjetoDeExtensao.BlazorApp\bin\Debug\net8.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
 D:\_SISTEMAS\_DOTNET\_IFES\projetodeextensao\ProjetoDeExtensao.BlazorApp\ProjetoDeExtensao.BlazorApp\bin\Debug\net8.0\Microsoft.AspNetCore.Authorization.dll
 D:\_SISTEMAS\_DOTNET\_IFES\projetodeextensao\ProjetoDeExtensao.BlazorApp\ProjetoDeExtensao.BlazorApp\bin\Debug\net8.0\Microsoft.AspNetCore.Components.dll
 D:\_SISTEMAS\_DOTNET\_IFES\projetodeextensao\ProjetoDeExtensao.BlazorApp\ProjetoDeExtensao.BlazorApp\bin\Debug\net8.0\Microsoft.AspNetCore.Components.Forms.dll
@@ -144,6 +145,8 @@ D:\_SISTEMAS\_DOTNET\_IFES\projetodeextensao\ProjetoDeExtensao.BlazorApp\Projeto
 D:\_SISTEMAS\_DOTNET\_IFES\projetodeextensao\ProjetoDeExtensao.BlazorApp\ProjetoDeExtensao.BlazorApp\bin\Debug\net8.0\runtimes\win\lib\net6.0\System.Security.Cryptography.ProtectedData.dll
 D:\_SISTEMAS\_DOTNET\_IFES\projetodeextensao\ProjetoDeExtensao.BlazorApp\ProjetoDeExtensao.BlazorApp\bin\Debug\net8.0\runtimes\win\lib\net6.0\System.Windows.Extensions.dll
 D:\_SISTEMAS\_DOTNET\_IFES\projetodeextensao\ProjetoDeExtensao.BlazorApp\ProjetoDeExtensao.BlazorApp\bin\Debug\net8.0\ProjetoDeExtensao.BlazorApp.Client.dll
+D:\_SISTEMAS\_DOTNET\_IFES\projetodeextensao\ProjetoDeExtensao.BlazorApp\ProjetoDeExtensao.BlazorApp\bin\Debug\net8.0\ProjetoDeExtensao.Shared.dll
+D:\_SISTEMAS\_DOTNET\_IFES\projetodeextensao\ProjetoDeExtensao.BlazorApp\ProjetoDeExtensao.BlazorApp\bin\Debug\net8.0\ProjetoDeExtensao.Shared.pdb
 D:\_SISTEMAS\_DOTNET\_IFES\projetodeextensao\ProjetoDeExtensao.BlazorApp\ProjetoDeExtensao.BlazorApp\bin\Debug\net8.0\ProjetoDeExtensao.BlazorApp.Client.pdb
 D:\_SISTEMAS\_DOTNET\_IFES\projetodeextensao\ProjetoDeExtensao.BlazorApp\ProjetoDeExtensao.BlazorApp\obj\Debug\net8.0\ProjetoDeExtensao.BlazorApp.csproj.AssemblyReference.cache
 D:\_SISTEMAS\_DOTNET\_IFES\projetodeextensao\ProjetoDeExtensao.BlazorApp\ProjetoDeExtensao.BlazorApp\obj\Debug\net8.0\ProjetoDeExtensao.BlazorApp.GeneratedMSBuildEditorConfig.editorconfig

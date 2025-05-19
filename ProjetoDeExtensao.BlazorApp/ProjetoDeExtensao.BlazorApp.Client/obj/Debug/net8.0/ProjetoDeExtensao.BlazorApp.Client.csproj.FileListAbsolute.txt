@@ -41,6 +41,8 @@ D:\_SISTEMAS\_DOTNET\_IFES\projetodeextensao\ProjetoDeExtensao.BlazorApp\Projeto
 D:\_SISTEMAS\_DOTNET\_IFES\projetodeextensao\ProjetoDeExtensao.BlazorApp\ProjetoDeExtensao.BlazorApp.Client\bin\Debug\net8.0\wwwroot\_framework\netstandard.wasm
 D:\_SISTEMAS\_DOTNET\_IFES\projetodeextensao\ProjetoDeExtensao.BlazorApp\ProjetoDeExtensao.BlazorApp.Client\bin\Debug\net8.0\wwwroot\_framework\ProjetoDeExtensao.BlazorApp.Client.pdb
 D:\_SISTEMAS\_DOTNET\_IFES\projetodeextensao\ProjetoDeExtensao.BlazorApp\ProjetoDeExtensao.BlazorApp.Client\bin\Debug\net8.0\wwwroot\_framework\ProjetoDeExtensao.BlazorApp.Client.wasm
+D:\_SISTEMAS\_DOTNET\_IFES\projetodeextensao\ProjetoDeExtensao.BlazorApp\ProjetoDeExtensao.BlazorApp.Client\bin\Debug\net8.0\wwwroot\_framework\ProjetoDeExtensao.Shared.pdb
+D:\_SISTEMAS\_DOTNET\_IFES\projetodeextensao\ProjetoDeExtensao.BlazorApp\ProjetoDeExtensao.BlazorApp.Client\bin\Debug\net8.0\wwwroot\_framework\ProjetoDeExtensao.Shared.wasm
 D:\_SISTEMAS\_DOTNET\_IFES\projetodeextensao\ProjetoDeExtensao.BlazorApp\ProjetoDeExtensao.BlazorApp.Client\bin\Debug\net8.0\wwwroot\_framework\System.AppContext.wasm
 D:\_SISTEMAS\_DOTNET\_IFES\projetodeextensao\ProjetoDeExtensao.BlazorApp\ProjetoDeExtensao.BlazorApp.Client\bin\Debug\net8.0\wwwroot\_framework\System.Buffers.wasm
 D:\_SISTEMAS\_DOTNET\_IFES\projetodeextensao\ProjetoDeExtensao.BlazorApp\ProjetoDeExtensao.BlazorApp.Client\bin\Debug\net8.0\wwwroot\_framework\System.Collections.Concurrent.wasm
@@ -353,6 +355,7 @@ D:\_SISTEMAS\_DOTNET\_IFES\projetodeextensao\ProjetoDeExtensao.BlazorApp\Projeto
 D:\_SISTEMAS\_DOTNET\_IFES\projetodeextensao\ProjetoDeExtensao.BlazorApp\ProjetoDeExtensao.BlazorApp.Client\bin\Debug\net8.0\wwwroot\_framework\System.Text.RegularExpressions.wasm.gz
 D:\_SISTEMAS\_DOTNET\_IFES\projetodeextensao\ProjetoDeExtensao.BlazorApp\ProjetoDeExtensao.BlazorApp.Client\bin\Debug\net8.0\wwwroot\_framework\System.Net.NetworkInformation.wasm.gz
 D:\_SISTEMAS\_DOTNET\_IFES\projetodeextensao\ProjetoDeExtensao.BlazorApp\ProjetoDeExtensao.BlazorApp.Client\bin\Debug\net8.0\wwwroot\_framework\System.Transactions.wasm.gz
+D:\_SISTEMAS\_DOTNET\_IFES\projetodeextensao\ProjetoDeExtensao.BlazorApp\ProjetoDeExtensao.BlazorApp.Client\bin\Debug\net8.0\wwwroot\_framework\ProjetoDeExtensao.Shared.wasm.gz
 D:\_SISTEMAS\_DOTNET\_IFES\projetodeextensao\ProjetoDeExtensao.BlazorApp\ProjetoDeExtensao.BlazorApp.Client\bin\Debug\net8.0\wwwroot\_framework\System.Xml.XPath.wasm.gz
 D:\_SISTEMAS\_DOTNET\_IFES\projetodeextensao\ProjetoDeExtensao.BlazorApp\ProjetoDeExtensao.BlazorApp.Client\bin\Debug\net8.0\wwwroot\_framework\ProjetoDeExtensao.BlazorApp.Client.pdb.gz
 D:\_SISTEMAS\_DOTNET\_IFES\projetodeextensao\ProjetoDeExtensao.BlazorApp\ProjetoDeExtensao.BlazorApp.Client\bin\Debug\net8.0\wwwroot\_framework\System.Net.HttpListener.wasm.gz
@@ -405,6 +408,7 @@ D:\_SISTEMAS\_DOTNET\_IFES\projetodeextensao\ProjetoDeExtensao.BlazorApp\Projeto
 D:\_SISTEMAS\_DOTNET\_IFES\projetodeextensao\ProjetoDeExtensao.BlazorApp\ProjetoDeExtensao.BlazorApp.Client\bin\Debug\net8.0\wwwroot\_framework\System.Reflection.Emit.Lightweight.wasm.gz
 D:\_SISTEMAS\_DOTNET\_IFES\projetodeextensao\ProjetoDeExtensao.BlazorApp\ProjetoDeExtensao.BlazorApp.Client\bin\Debug\net8.0\wwwroot\_framework\System.ComponentModel.EventBasedAsync.wasm.gz
 D:\_SISTEMAS\_DOTNET\_IFES\projetodeextensao\ProjetoDeExtensao.BlazorApp\ProjetoDeExtensao.BlazorApp.Client\bin\Debug\net8.0\wwwroot\_framework\System.IO.Pipelines.wasm.gz
+D:\_SISTEMAS\_DOTNET\_IFES\projetodeextensao\ProjetoDeExtensao.BlazorApp\ProjetoDeExtensao.BlazorApp.Client\bin\Debug\net8.0\wwwroot\_framework\ProjetoDeExtensao.Shared.pdb.gz
 D:\_SISTEMAS\_DOTNET\_IFES\projetodeextensao\ProjetoDeExtensao.BlazorApp\ProjetoDeExtensao.BlazorApp.Client\bin\Debug\net8.0\wwwroot\_framework\System.Threading.Thread.wasm.gz
 D:\_SISTEMAS\_DOTNET\_IFES\projetodeextensao\ProjetoDeExtensao.BlazorApp\ProjetoDeExtensao.BlazorApp.Client\bin\Debug\net8.0\wwwroot\_framework\System.Net.WebHeaderCollection.wasm.gz
 D:\_SISTEMAS\_DOTNET\_IFES\projetodeextensao\ProjetoDeExtensao.BlazorApp\ProjetoDeExtensao.BlazorApp.Client\bin\Debug\net8.0\wwwroot\_framework\System.IO.MemoryMappedFiles.wasm.gz
@@ -613,6 +617,8 @@ D:\_SISTEMAS\_DOTNET\_IFES\projetodeextensao\ProjetoDeExtensao.BlazorApp\Projeto
 D:\_SISTEMAS\_DOTNET\_IFES\projetodeextensao\ProjetoDeExtensao.BlazorApp\ProjetoDeExtensao.BlazorApp.Client\bin\Debug\net8.0\icudt_EFIGS.dat
 D:\_SISTEMAS\_DOTNET\_IFES\projetodeextensao\ProjetoDeExtensao.BlazorApp\ProjetoDeExtensao.BlazorApp.Client\bin\Debug\net8.0\icudt_no_CJK.dat
 D:\_SISTEMAS\_DOTNET\_IFES\projetodeextensao\ProjetoDeExtensao.BlazorApp\ProjetoDeExtensao.BlazorApp.Client\bin\Debug\net8.0\emcc-props.json
+D:\_SISTEMAS\_DOTNET\_IFES\projetodeextensao\ProjetoDeExtensao.BlazorApp\ProjetoDeExtensao.BlazorApp.Client\bin\Debug\net8.0\ProjetoDeExtensao.Shared.dll
+D:\_SISTEMAS\_DOTNET\_IFES\projetodeextensao\ProjetoDeExtensao.BlazorApp\ProjetoDeExtensao.BlazorApp.Client\bin\Debug\net8.0\ProjetoDeExtensao.Shared.pdb
 D:\_SISTEMAS\_DOTNET\_IFES\projetodeextensao\ProjetoDeExtensao.BlazorApp\ProjetoDeExtensao.BlazorApp.Client\obj\Debug\net8.0\ProjetoDeExtensao.BlazorApp.Client.csproj.AssemblyReference.cache
 D:\_SISTEMAS\_DOTNET\_IFES\projetodeextensao\ProjetoDeExtensao.BlazorApp\ProjetoDeExtensao.BlazorApp.Client\obj\Debug\net8.0\ProjetoDeExtensao.BlazorApp.Client.GeneratedMSBuildEditorConfig.editorconfig
 D:\_SISTEMAS\_DOTNET\_IFES\projetodeextensao\ProjetoDeExtensao.BlazorApp\ProjetoDeExtensao.BlazorApp.Client\obj\Debug\net8.0\ProjetoDeExtensao.BlazorApp.Client.AssemblyInfoInputs.cache
@@ -811,6 +817,7 @@ D:\_SISTEMAS\_DOTNET\_IFES\projetodeextensao\ProjetoDeExtensao.BlazorApp\Projeto
 D:\_SISTEMAS\_DOTNET\_IFES\projetodeextensao\ProjetoDeExtensao.BlazorApp\ProjetoDeExtensao.BlazorApp.Client\obj\Debug\net8.0\webcil\mscorlib.wasm
 D:\_SISTEMAS\_DOTNET\_IFES\projetodeextensao\ProjetoDeExtensao.BlazorApp\ProjetoDeExtensao.BlazorApp.Client\obj\Debug\net8.0\webcil\netstandard.wasm
 D:\_SISTEMAS\_DOTNET\_IFES\projetodeextensao\ProjetoDeExtensao.BlazorApp\ProjetoDeExtensao.BlazorApp.Client\obj\Debug\net8.0\webcil\System.Private.CoreLib.wasm
+D:\_SISTEMAS\_DOTNET\_IFES\projetodeextensao\ProjetoDeExtensao.BlazorApp\ProjetoDeExtensao.BlazorApp.Client\obj\Debug\net8.0\webcil\ProjetoDeExtensao.Shared.wasm
 D:\_SISTEMAS\_DOTNET\_IFES\projetodeextensao\ProjetoDeExtensao.BlazorApp\ProjetoDeExtensao.BlazorApp.Client\obj\Debug\net8.0\webcil\ProjetoDeExtensao.BlazorApp.Client.wasm
 D:\_SISTEMAS\_DOTNET\_IFES\projetodeextensao\ProjetoDeExtensao.BlazorApp\ProjetoDeExtensao.BlazorApp.Client\obj\Debug\net8.0\scopedcss\bundle\ProjetoDeExtensao.BlazorApp.Client.styles.css
 D:\_SISTEMAS\_DOTNET\_IFES\projetodeextensao\ProjetoDeExtensao.BlazorApp\ProjetoDeExtensao.BlazorApp.Client\obj\Debug\net8.0\blazor.build.boot-extension.json
@@ -1017,9 +1024,8 @@ D:\_SISTEMAS\_DOTNET\_IFES\projetodeextensao\ProjetoDeExtensao.BlazorApp\Projeto
 D:\_SISTEMAS\_DOTNET\_IFES\projetodeextensao\ProjetoDeExtensao.BlazorApp\ProjetoDeExtensao.BlazorApp.Client\obj\Debug\net8.0\compressed\qp25nnj8rs-tptq2av103.gz
 D:\_SISTEMAS\_DOTNET\_IFES\projetodeextensao\ProjetoDeExtensao.BlazorApp\ProjetoDeExtensao.BlazorApp.Client\obj\Debug\net8.0\compressed\mytpf6aa7g-lfu7j35m59.gz
 D:\_SISTEMAS\_DOTNET\_IFES\projetodeextensao\ProjetoDeExtensao.BlazorApp\ProjetoDeExtensao.BlazorApp.Client\obj\Debug\net8.0\compressed\nc5t8gdhlw-oyz0vx2fzb.gz
-D:\_SISTEMAS\_DOTNET\_IFES\projetodeextensao\ProjetoDeExtensao.BlazorApp\ProjetoDeExtensao.BlazorApp.Client\obj\Debug\net8.0\compressed\5ny0t8ufoq-fkeb9v74d9.gz
-D:\_SISTEMAS\_DOTNET\_IFES\projetodeextensao\ProjetoDeExtensao.BlazorApp\ProjetoDeExtensao.BlazorApp.Client\obj\Debug\net8.0\compressed\q7jb9zxkpl-jg51b1ws03.gz
-D:\_SISTEMAS\_DOTNET\_IFES\projetodeextensao\ProjetoDeExtensao.BlazorApp\ProjetoDeExtensao.BlazorApp.Client\obj\Debug\net8.0\compressed\kw6juyf6xo-zmi8f77khx.gz
+D:\_SISTEMAS\_DOTNET\_IFES\projetodeextensao\ProjetoDeExtensao.BlazorApp\ProjetoDeExtensao.BlazorApp.Client\obj\Debug\net8.0\compressed\pyzcspmd4z-i1jw12vall.gz
+D:\_SISTEMAS\_DOTNET\_IFES\projetodeextensao\ProjetoDeExtensao.BlazorApp\ProjetoDeExtensao.BlazorApp.Client\obj\Debug\net8.0\compressed\yy2h7tn6c1-h14j8qjrcq.gz
 D:\_SISTEMAS\_DOTNET\_IFES\projetodeextensao\ProjetoDeExtensao.BlazorApp\ProjetoDeExtensao.BlazorApp.Client\obj\Debug\net8.0\staticwebassets.build.json
 D:\_SISTEMAS\_DOTNET\_IFES\projetodeextensao\ProjetoDeExtensao.BlazorApp\ProjetoDeExtensao.BlazorApp.Client\obj\Debug\net8.0\staticwebassets.development.json
 D:\_SISTEMAS\_DOTNET\_IFES\projetodeextensao\ProjetoDeExtensao.BlazorApp\ProjetoDeExtensao.BlazorApp.Client\obj\Debug\net8.0\staticwebassets.build.endpoints.json
@@ -1035,3 +1041,6 @@ D:\_SISTEMAS\_DOTNET\_IFES\projetodeextensao\ProjetoDeExtensao.BlazorApp\Projeto
 D:\_SISTEMAS\_DOTNET\_IFES\projetodeextensao\ProjetoDeExtensao.BlazorApp\ProjetoDeExtensao.BlazorApp.Client\obj\Debug\net8.0\refint\ProjetoDeExtensao.BlazorApp.Client.dll
 D:\_SISTEMAS\_DOTNET\_IFES\projetodeextensao\ProjetoDeExtensao.BlazorApp\ProjetoDeExtensao.BlazorApp.Client\obj\Debug\net8.0\ProjetoDeExtensao.BlazorApp.Client.pdb
 D:\_SISTEMAS\_DOTNET\_IFES\projetodeextensao\ProjetoDeExtensao.BlazorApp\ProjetoDeExtensao.BlazorApp.Client\obj\Debug\net8.0\ref\ProjetoDeExtensao.BlazorApp.Client.dll
+D:\_SISTEMAS\_DOTNET\_IFES\projetodeextensao\ProjetoDeExtensao.BlazorApp\ProjetoDeExtensao.BlazorApp.Client\obj\Debug\net8.0\compressed\5ny0t8ufoq-5ag47i5pbl.gz
+D:\_SISTEMAS\_DOTNET\_IFES\projetodeextensao\ProjetoDeExtensao.BlazorApp\ProjetoDeExtensao.BlazorApp.Client\obj\Debug\net8.0\compressed\q7jb9zxkpl-hwuq7byx8f.gz
+D:\_SISTEMAS\_DOTNET\_IFES\projetodeextensao\ProjetoDeExtensao.BlazorApp\ProjetoDeExtensao.BlazorApp.Client\obj\Debug\net8.0\compressed\kw6juyf6xo-j3xn9z5aej.gz

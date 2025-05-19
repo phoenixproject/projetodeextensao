@@ -2,6 +2,7 @@
 using Microsoft.Extensions.Configuration;
 using ProjetoDeExtensao.BlazorApp._MODEL._SISTEMAS;
 using ProjetoDeExtensao.BlazorApp._REPOSITORIO;
+using ProjetoDeExtensao.Shared._MODEL;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,19 +21,38 @@ namespace ProjetoDeExtensao.BlazorApp._APLICACAO
 			this.RepositorioDeTipoDeServico = new RepositorioDeTipoDeServico(projetoextensao);
 		}
 
-		public TipoServico ObterTipoDeServicoPorId(int id)
+		public TipoServicoDTO ConverterParaTipoDeServicoDTO(TipoServico tipoServico)
 		{
-			return RepositorioDeTipoDeServico.ObterTipoDeServicoPorId(id);
+			return new TipoServicoDTO
+			{
+				TpServico = tipoServico.TpServico,
+				DsTpServico = tipoServico.DsTpServico
+			};
 		}
 
-		public List<TipoServico> ObterTodosOsTiposDeServicos()
+		public List<TipoServicoDTO> ConverterListaDeTipoDeServicoParaFormatoDTO(List<TipoServico> listaDeTipoDeServico)
 		{
-			return RepositorioDeTipoDeServico.ObterTodosOsTiposDeServicos();
+			List<TipoServicoDTO> listaDeTipoDeServicoDTO = new List<TipoServicoDTO>();
+			foreach (var tipoServico in listaDeTipoDeServico)
+			{
+				listaDeTipoDeServicoDTO.Add(ConverterParaTipoDeServicoDTO(tipoServico));
+			}
+			return listaDeTipoDeServicoDTO;
 		}
 
-		public TipoServico ObterTipoDeServicoPorDescricao(string descricao)
+		public TipoServicoDTO ObterTipoDeServicoPorId(int id)
 		{
-			return RepositorioDeTipoDeServico.ObterTipoDeServicoPorDescricao(descricao);
+			return ConverterParaTipoDeServicoDTO(RepositorioDeTipoDeServico.ObterTipoDeServicoPorId(id));
+		}
+
+		public List<TipoServicoDTO> ObterTodosOsTiposDeServicos()
+		{
+			return ConverterListaDeTipoDeServicoParaFormatoDTO(RepositorioDeTipoDeServico.ObterTodosOsTiposDeServicos());
+		}
+
+		public TipoServicoDTO ObterTipoDeServicoPorDescricao(string descricao)
+		{
+			return ConverterParaTipoDeServicoDTO(RepositorioDeTipoDeServico.ObterTipoDeServicoPorDescricao(descricao));
 		}
 
 		public bool VerificarSeTipoDeServicoComMesmoEmailJaExiste(TipoServico tipoServico)

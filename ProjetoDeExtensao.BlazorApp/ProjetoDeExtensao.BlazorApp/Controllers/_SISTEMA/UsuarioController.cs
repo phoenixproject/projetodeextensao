@@ -1,9 +1,12 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using ProjetoDeExtensao.BlazorApp._APLICACAO;
 using ProjetoDeExtensao.BlazorApp._MODEL._SISTEMAS;
+using ProjetoDeExtensao.Shared._MODEL;
 
 namespace ProjetoDeExtensao.BlazorApp.Controllers._SISTEMA
 {
+	[Route("api/Usuario")]
+	[ApiController]
 	public class UsuarioController : Controller
 	{
 		private readonly ProjetodeextensaoContext _projetoextensao;
@@ -19,9 +22,9 @@ namespace ProjetoDeExtensao.BlazorApp.Controllers._SISTEMA
 		}
 
 		[HttpGet]
-		public async Task<ActionResult<List<Usuario>>> Get()
+		public async Task<ActionResult<List<UsuarioDTO>>> Get()
 		{
-			List<Usuario> usuarios = new List<Usuario>();
+			List<UsuarioDTO> usuarios = new List<UsuarioDTO>();
 
 			try
 			{
@@ -37,9 +40,9 @@ namespace ProjetoDeExtensao.BlazorApp.Controllers._SISTEMA
 		}
 
 		[HttpGet("{id}")]
-		public async Task<ActionResult<Usuario>> Get(int id)
+		public async Task<ActionResult<UsuarioDTO>> Get(int id)
 		{
-			Usuario usuario = new Usuario();
+			UsuarioDTO usuario = new UsuarioDTO();
 
 			try
 			{

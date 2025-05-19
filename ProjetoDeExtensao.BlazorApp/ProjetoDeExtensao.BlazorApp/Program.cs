@@ -19,6 +19,10 @@ namespace ProjetoDeExtensao.BlazorApp
                 .AddInteractiveServerComponents()
                 .AddInteractiveWebAssemblyComponents();
 
+			builder.Services.AddControllers();
+
+			builder.Services.AddScoped<HttpClient>();
+
 			// Configurar autenticação JWT
 			builder.Services.AddAuthentication(options =>
 			{
@@ -59,6 +63,8 @@ namespace ProjetoDeExtensao.BlazorApp
 
 			var app = builder.Build();
 
+			app.UseDeveloperExceptionPage();
+
 			// Para a autenticação com JWT
 			app.UseAuthentication();
 			app.UseAuthorization();
@@ -77,7 +83,9 @@ namespace ProjetoDeExtensao.BlazorApp
 
             app.UseHttpsRedirection();
 
-            app.UseStaticFiles();
+			app.MapControllers();
+
+			app.UseStaticFiles();
             app.UseAntiforgery();
 
             app.MapRazorComponents<App>()

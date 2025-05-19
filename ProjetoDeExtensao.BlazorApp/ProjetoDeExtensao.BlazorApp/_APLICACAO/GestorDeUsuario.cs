@@ -2,6 +2,7 @@
 using Microsoft.Extensions.Configuration;
 using ProjetoDeExtensao.BlazorApp._MODEL._SISTEMAS;
 using ProjetoDeExtensao.BlazorApp._REPOSITORIO;
+using ProjetoDeExtensao.Shared._MODEL;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,19 +21,50 @@ namespace ProjetoDeExtensao.BlazorApp._APLICACAO
 			this.RepositorioDeUsuario = new RepositorioDeUsuario(projetoextensao);
 		}
 
-		public Usuario ObterUsuarioPorId(int id)
+		public UsuarioDTO ConverterUsuarioParaFormatoDTO(Usuario usuario)
 		{
-			return RepositorioDeUsuario.ObterUsuarioPorId(id);
+			UsuarioDTO usuario_dto = new UsuarioDTO();
+
+			usuario_dto.CdUsuario = usuario.CdUsuario;
+			usuario_dto.Email = usuario.Email;
+			usuario_dto.Password = usuario.Password;	
+			usuario_dto.Nome = usuario.Nome;
+			usuario_dto.Telefone = usuario.Telefone;
+			usuario_dto.TpUsuario = usuario.TpUsuario;	
+			usuario_dto.TpServico = usuario.TpServico;
+			usuario_dto.CdStatus = usuario.CdStatus;
+			
+			return usuario_dto;
 		}
 
-		public List<Usuario> ObterTodosOsUsuarios()
+		public List<UsuarioDTO> ConverterListaDeUsuarioParaFormatoDTO(List<Usuario> listaDeUsuario)
 		{
-			return RepositorioDeUsuario.ObterTodosOsUsuarios();
+			List<UsuarioDTO> listaDeUsuarioDTO = new List<UsuarioDTO>();
+			foreach (var usuario in listaDeUsuario)
+			{
+				listaDeUsuarioDTO.Add(ConverterUsuarioParaFormatoDTO(usuario));
+			}
+			return listaDeUsuarioDTO;
 		}
 
-		public Usuario ObterUsuarioPorEmail(string email)
+		public UsuarioDTO ObterUsuarioPorId(int id)
 		{
-			return RepositorioDeUsuario.ObterUsuarioPorEmail(email);
+			return ConverterUsuarioParaFormatoDTO(RepositorioDeUsuario.ObterUsuarioPorId(id));
+		}
+
+		public UsuarioDTO ObterUsuarioPorEmailESenha(string email, string password)
+		{
+			return ConverterUsuarioParaFormatoDTO(RepositorioDeUsuario.ObterUsuarioPorEmailESenha(email, password));
+		}
+
+		public List<UsuarioDTO> ObterTodosOsUsuarios()
+		{
+			return ConverterListaDeUsuarioParaFormatoDTO(RepositorioDeUsuario.ObterTodosOsUsuarios());
+		}
+
+		public UsuarioDTO ObterUsuarioPorEmail(string email)
+		{
+			return ConverterUsuarioParaFormatoDTO(RepositorioDeUsuario.ObterUsuarioPorEmail(email));
 		}
 
 		public bool VerificarSeUsuarioComMesmoEmailJaExiste(Usuario usuario)

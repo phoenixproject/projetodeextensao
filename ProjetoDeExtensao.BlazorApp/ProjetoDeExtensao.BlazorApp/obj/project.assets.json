@@ -1763,13 +1763,24 @@
         "type": "project",
         "framework": ".NETCoreApp,Version=v8.0",
         "dependencies": {
-          "Microsoft.AspNetCore.Components.WebAssembly": "8.0.16"
+          "Microsoft.AspNetCore.Components.WebAssembly": "8.0.16",
+          "ProjetoDeExtensao.Shared": "1.0.0"
         },
         "compile": {
           "bin/placeholder/ProjetoDeExtensao.BlazorApp.Client.dll": {}
         },
         "runtime": {
           "bin/placeholder/ProjetoDeExtensao.BlazorApp.Client.dll": {}
+        }
+      },
+      "ProjetoDeExtensao.Shared/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v8.0",
+        "compile": {
+          "bin/placeholder/ProjetoDeExtensao.Shared.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/ProjetoDeExtensao.Shared.dll": {}
         }
       }
     }
@@ -4434,6 +4445,11 @@
       "type": "project",
       "path": "../ProjetoDeExtensao.BlazorApp.Client/ProjetoDeExtensao.BlazorApp.Client.csproj",
       "msbuildProject": "../ProjetoDeExtensao.BlazorApp.Client/ProjetoDeExtensao.BlazorApp.Client.csproj"
+    },
+    "ProjetoDeExtensao.Shared/1.0.0": {
+      "type": "project",
+      "path": "../../ProjetoDeExtensao.Shared/ProjetoDeExtensao.Shared.csproj",
+      "msbuildProject": "../../ProjetoDeExtensao.Shared/ProjetoDeExtensao.Shared.csproj"
     }
   },
   "projectFileDependencyGroups": {
@@ -4444,7 +4460,8 @@
       "Microsoft.EntityFrameworkCore.Design >= 8.0.16",
       "Microsoft.EntityFrameworkCore.SqlServer >= 8.0.16",
       "Microsoft.EntityFrameworkCore.Tools >= 8.0.16",
-      "ProjetoDeExtensao.BlazorApp.Client >= 1.0.0"
+      "ProjetoDeExtensao.BlazorApp.Client >= 1.0.0",
+      "ProjetoDeExtensao.Shared >= 1.0.0"
     ]
   },
   "packageFolders": {
@@ -4482,6 +4499,9 @@
           "projectReferences": {
             "D:\\_SISTEMAS\\_DOTNET\\_IFES\\projetodeextensao\\ProjetoDeExtensao.BlazorApp\\ProjetoDeExtensao.BlazorApp.Client\\ProjetoDeExtensao.BlazorApp.Client.csproj": {
               "projectPath": "D:\\_SISTEMAS\\_DOTNET\\_IFES\\projetodeextensao\\ProjetoDeExtensao.BlazorApp\\ProjetoDeExtensao.BlazorApp.Client\\ProjetoDeExtensao.BlazorApp.Client.csproj"
+            },
+            "D:\\_SISTEMAS\\_DOTNET\\_IFES\\projetodeextensao\\ProjetoDeExtensao.Shared\\ProjetoDeExtensao.Shared.csproj": {
+              "projectPath": "D:\\_SISTEMAS\\_DOTNET\\_IFES\\projetodeextensao\\ProjetoDeExtensao.Shared\\ProjetoDeExtensao.Shared.csproj"
             }
           }
         }
