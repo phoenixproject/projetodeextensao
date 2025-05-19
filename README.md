@@ -1,12 +1,11 @@
 # PROFEX - Aplicativo de Gerenciamento de MEI e Serviços
 
-![Banner PROFEX](https://raw.githubusercontent.com/seu-usuario/profex/main/imagens/banner.png)
+![Tela Inicial](app/src/main/res/drawable/inicial.jpg)
 
 ## 📱 Sobre o projeto
 
 PROFEX é um aplicativo mobile desenvolvido em Kotlin com Jetpack Compose que permite o gerenciamento de Microempreendedores Individuais (MEI) e seus serviços prestados. O aplicativo permite o cadastro completo de MEIs, registro de serviços associados, e acompanhamento do status dos serviços.
 
-![Tela Principal](https://raw.githubusercontent.com/seu-usuario/profex/main/imagens/tela_principal.png)
 
 ## 🛠️ Tecnologias utilizadas
 
@@ -25,12 +24,10 @@ O aplicativo utiliza duas tabelas principais:
 ### Tabela MEI (`mei_table`)
 Armazena informações sobre os Microempreendedores Individuais cadastrados.
 
-![Entidade MEI](https://raw.githubusercontent.com/seu-usuario/profex/main/imagens/entidade_mei.png)
 
 ### Tabela Serviço (`servico_table`)
 Armazena informações sobre os serviços prestados pelos MEIs.
 
-![Entidade Serviço](https://raw.githubusercontent.com/seu-usuario/profex/main/imagens/entidade_servico.png)
 
 ## 📝 Queries SQL utilizadas
 
@@ -106,7 +103,6 @@ interface ServicoDao {
 
 ## 🔄 Relacionamento entre as tabelas
 
-![Diagrama de Relacionamento](https://raw.githubusercontent.com/seu-usuario/profex/main/imagens/relacionamento.png)
 
 O relacionamento entre as tabelas é definido da seguinte forma:
 
@@ -136,7 +132,6 @@ Este relacionamento garante:
 
 O aplicativo segue a arquitetura MVVM (Model-View-ViewModel) com as seguintes camadas:
 
-![Arquitetura MVVM](https://raw.githubusercontent.com/seu-usuario/profex/main/imagens/arquitetura.png)
 
 1. **Model**: Entidades (MEI e Servico) e banco de dados Room
 2. **View**: Componentes Compose para UI (telas e componentes visuais)
@@ -151,7 +146,6 @@ O aplicativo segue a arquitetura MVVM (Model-View-ViewModel) com as seguintes ca
 - Visualização de serviços filtrados por MEI
 - Acompanhamento do status dos serviços
 
-![Telas do App](https://raw.githubusercontent.com/seu-usuario/profex/main/imagens/telas.png)
 
 ## 🔧 Como executar o projeto
 
