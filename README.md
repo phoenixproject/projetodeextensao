@@ -1,6 +1,6 @@
 # PROFEX - Aplicativo de Gerenciamento de MEI e Serviços
 
-![Tela Inicial]<img src="app/src/main/res/drawable/inicial.jpg" alt="Tela Inicial" width="200"/>
+<img src="app/src/main/res/drawable/inicial.jpg" alt="Tela Inicial" width="200"/>
 
 ## 📱 Sobre o projeto
 
