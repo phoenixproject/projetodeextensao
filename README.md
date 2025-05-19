@@ -4,7 +4,7 @@
   <img src="app/src/main/res/drawable/inicial.jpg" alt="Tela Inicial" width="150"/>
   <img src="app/src/main/res/drawable/novo_mei.jpg" alt="Novo MEI" width="150"/>
   <img src="app/src/main/res/drawable/servico_screen.jpg" alt="Serviço Screen" width="150"/>
-  <img src="app/src/main/res/drawable/tela_de_servico.jpg" alt="Tela de Serviço" width="150"/>
+  <img src="app/src/main/res/drawable/tela_de_servico.jpg" alt="Tela de Serviço" width="300"/>
   <img src="app/src/main/res/drawable/tela_mei.jpg" alt="Tela MEI" width="150"/>
   <img src="app/src/main/res/drawable/tela_do_servico_final.jpg" alt="Final Screen" width="150"/>
 </div>
