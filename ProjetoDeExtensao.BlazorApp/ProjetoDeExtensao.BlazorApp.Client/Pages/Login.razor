@@ -1,0 +1,252 @@
+@page "/login"
+@using System.Net.Http.Json
+@using System.Text.Json
+@inject HttpClient Http
+@inject NavigationManager NavigationManager
+@inject IJSRuntime JSRuntime
+@inject ILogger<Login> Logger
+@rendermode @(new InteractiveWebAssemblyRenderMode(prerender: false))
+
+<div class="container-fluid px-0">
+    <!-- Cabeçalho com logo e nome do sistema -->
+    @*<header class="bg-primary text-white py-3">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-md-2 col-sm-3 text-center text-sm-start mb-2 mb-sm-0">
+                    <img src="images/logo-baixo-guandu.png" alt="Logo Baixo Guandú" class="img-fluid" style="max-height: 80px;" />
+                </div>
+                <div class="col-md-8 col-sm-6 text-center text-sm-start">
+                    <h1 class="h3 mb-0">Serviços Baixo Guandú</h1>
+                    <p class="mb-0 d-none d-sm-block">Acesso ao Sistema</p>
+                </div>
+                <div class="col-md-2 col-sm-3 text-center text-sm-end mt-2 mt-sm-0">
+                    <a href="/" class="btn btn-light">
+                        <i class="bi bi-house-door me-1"></i> Início
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>*@
+
+    <!-- Conteúdo principal - Login -->
+    <div class="container py-5">
+        <div class="row justify-content-center">
+            <div class="col-lg-5 col-md-7 col-sm-10">
+                <div class="card shadow-sm border-0">
+                    <div class="card-body p-4 p-md-5">
+                        <div class="text-center mb-4">
+                            <i class="bi bi-person-circle text-primary" style="font-size: 3rem;"></i>
+                            <h2 class="mt-3 mb-1">Acesso ao Sistema</h2>
+                            <p class="text-muted">Informe suas credenciais para entrar</p>
+                        </div>
+
+                        @if (mensagemErro != null)
+                        {
+                            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                @mensagemErro
+                                <button type="button" class="btn-close" @onclick="() => mensagemErro = null" aria-label="Close"></button>
+                            </div>
+                        }
+
+                        <form @onsubmit="RealizarLogin">
+                            <div class="mb-3">
+                                <label for="email" class="form-label">Email</label>
+                                <div class="input-group">
+                                    <span class="input-group-text"><i class="bi bi-envelope"></i></span>
+                                    <input type="email" class="form-control" id="email" @bind="email" placeholder="seu.email@exemplo.com" required />
+                                </div>
+                            </div>
+                            <div class="mb-4">
+                                <label for="senha" class="form-label">Senha</label>
+                                <div class="input-group">
+                                    <span class="input-group-text"><i class="bi bi-lock"></i></span>
+                                    <input type="password" class="form-control" id="senha" @bind="senha" placeholder="Sua senha" required />
+                                </div>
+                            </div>
+                            <div class="d-grid">
+                                <button type="submit" class="btn btn-primary btn-lg" disabled="@processandoLogin">
+                                    @if (processandoLogin)
+                                    {
+                                        <span class="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>
+                                        <span>Processando...</span>
+                                    }
+                                    else
+                                    {
+                                        <i class="bi bi-box-arrow-in-right me-2"></i>
+                                        <span>Entrar</span>
+                                    }
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="text-center mt-4">
+                    <a href="/" class="text-decoration-none">
+                        <i class="bi bi-arrow-left me-1"></i> Voltar para busca de profissionais
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Rodapé -->
+    <footer class="bg-dark text-white py-4 mt-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 mb-3 mb-md-0">
+                    <h5>Serviços Baixo Guandú</h5>
+                    <p class="mb-0">Conectando você aos melhores profissionais da cidade.</p>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <p class="mb-0">&copy; 2025 Prefeitura de Baixo Guandú - ES</p>
+                    <p class="mb-0 small">Todos os direitos reservados</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+</div>
+
+@code {
+    private LoginModel loginModel = new();
+    private string email = "";
+    private string senha = "";
+    private bool processandoLogin = false;
+    private string mensagemErro = null;
+
+    private async Task RealizarLogin()
+    {
+        try
+        {
+            processandoLogin = true;
+            mensagemErro = null;
+
+            // Validação básica
+            if (string.IsNullOrEmpty(email) || string.IsNullOrEmpty(senha))
+            {
+                mensagemErro = "Por favor, preencha todos os campos.";
+                Logger.LogWarning("Tentativa de login com campos vazios");
+                return;
+            }
+
+            // Extrair nome de usuário do email para personalização
+            string nomeUsuario = ObterNomeUsuarioDoEmail(email);
+
+            // Criar modelo de login
+            loginModel.email = email;
+            loginModel.password = senha;
+            loginModel.nome = nomeUsuario;
+            loginModel.permissao = "Admin";
+
+            // Log detalhado antes da requisição
+            Logger.LogInformation($"Enviando requisição de login para: https://localhost:7240/api/auth/login");
+            Logger.LogInformation($"Payload: email={email}, nome={loginModel.nome}, permissao={loginModel.permissao}");
+
+            // Enviar requisição para a API
+            var response = await Http.PostAsJsonAsync("https://localhost:7240/api/auth/login", loginModel);
+
+            if (response.IsSuccessStatusCode)
+            {
+                // Obter token JWT da resposta
+                var resultado = await response.Content.ReadFromJsonAsync<LoginResponse>();
+                Logger.LogInformation("Login bem-sucedido, token recebido");
+
+                if (resultado != null && !string.IsNullOrEmpty(resultado.Token))
+                {
+                    // Armazenar token no localStorage
+                    await JSRuntime.InvokeVoidAsync("localStorage.setItem", "auth_token", resultado.Token);
+
+                    // Armazenar nome de usuário personalizado
+                    await JSRuntime.InvokeVoidAsync("localStorage.setItem", "user_name", nomeUsuario);
+                    await JSRuntime.InvokeVoidAsync("localStorage.setItem", "user_type", "Administrador");
+
+                    Logger.LogInformation($"Usuário {nomeUsuario} autenticado com sucesso");
+
+                    // Redirecionar para a página inicial
+                    NavigationManager.NavigateTo("/", true);
+                }
+                else
+                {
+                    mensagemErro = "Erro ao processar resposta do servidor.";
+                    Logger.LogError("Token não encontrado na resposta");
+                }
+            }
+            else
+            {
+                // Tratar erro de autenticação com detalhes
+                var errorContent = await response.Content.ReadAsStringAsync();
+                Logger.LogError($"Erro na resposta: {response.StatusCode}, Conteúdo: {errorContent}");
+
+                if (response.StatusCode == System.Net.HttpStatusCode.Unauthorized)
+                {
+                    mensagemErro = "Email ou senha incorretos.";
+                }
+                else if (response.StatusCode == System.Net.HttpStatusCode.BadRequest)
+                {
+                    // Tentar extrair mensagem de erro específica
+                    try
+                    {
+                        var errorObj = JsonSerializer.Deserialize<ErrorResponse>(errorContent);
+                        if (errorObj != null && errorObj.Errors != null && errorObj.Errors.Count > 0)
+                        {
+                            mensagemErro = $"Erro de validação: {string.Join(", ", errorObj.Errors.Values.SelectMany(v => v))}";
+                        }
+                        else
+                        {
+                            mensagemErro = $"Erro ao realizar login: {response.StatusCode}";
+                        }
+                    }
+                    catch
+                    {
+                        mensagemErro = $"Erro ao realizar login: {response.StatusCode}";
+                    }
+                }
+                else
+                {
+                    mensagemErro = $"Erro ao realizar login: {response.StatusCode}";
+                    Logger.LogError($"Detalhes do erro: {errorContent}");
+                }
+            }
+        }
+        catch (Exception ex)
+        {
+            mensagemErro = $"Erro ao processar login: {ex.Message}";
+            Logger.LogError($"Exceção durante login: {ex}");
+        }
+        finally
+        {
+            processandoLogin = false;
+        }
+    }
+
+    // Método para extrair um nome de usuário do email
+    private string ObterNomeUsuarioDoEmail(string email)
+    {
+        if (string.IsNullOrEmpty(email))
+            return "Usuário";
+
+        // Extrair parte antes do @
+        string nomeParcial = email.Split('@')[0];
+
+        // Capitalizar primeira letra de cada palavra
+        string[] partes = nomeParcial.Split('.', '_', '-');
+        for (int i = 0; i < partes.Length; i++)
+        {
+            if (!string.IsNullOrEmpty(partes[i]) && partes[i].Length > 0)
+            {
+                partes[i] = char.ToUpper(partes[i][0]) + partes[i].Substring(1);
+            }
+        }
+
+        return string.Join(" ", partes);
+    }
+
+    private class LoginResponse
+    {
+        public string Token { get; set; }
+    }
+
+    private class ErrorResponse
+    {
+        public Dictionary<string, List<string>> Errors { get; set; }
+    }
+}

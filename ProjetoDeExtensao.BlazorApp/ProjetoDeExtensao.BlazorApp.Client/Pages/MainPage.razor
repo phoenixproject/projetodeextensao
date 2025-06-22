@@ -1,0 +1,497 @@
+@page "/"
+@using System.Net.Http.Json
+@using System.Text.Json
+@inject HttpClient Http
+@inject NavigationManager NavigationManager
+@inject ILogger<MainPage> Logger
+@inject IJSRuntime JSRuntime
+@rendermode @(new InteractiveWebAssemblyRenderMode(prerender: false))
+
+
+<div class="container-fluid px-0">
+    <!-- Cabeçalho com logo e nome do sistema -->
+    <header class="bg-primary text-white py-3">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-md-2 col-sm-3 text-center text-sm-start mb-2 mb-sm-0">
+                    <img src="images/logo-baixo-guandu.png" alt="Logo Baixo Guandú" class="img-fluid" style="max-height: 80px;" />
+                </div>
+                <div class="col-md-8 col-sm-6 text-center text-sm-start">
+                    <h1 class="h3 mb-0">Serviços Baixo Guandú</h1>
+                    <p class="mb-0 d-none d-sm-block">Encontre profissionais qualificados para seus serviços</p>
+                </div>
+                <div class="col-md-2 col-sm-3 text-center text-sm-end mt-2 mt-sm-0">
+                    @if (isAuthenticated)
+                    {
+                        @*<div class="dropdown">
+                            <button class="btn btn-light dropdown-toggle" type="button" id="userMenu" data-bs-toggle="dropdown" aria-expanded="false">
+                                <i class="bi bi-person-circle me-1"></i> @userName
+                            </button>
+
+                            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userMenu">
+                                <li><button class="dropdown-item" @onclick='() => currentView = "search"'>Página Inicial</button></li>
+                                <li><button class="dropdown-item" @onclick='() => currentView = "manageUsers"'>Gerenciar Usuários</button></li>
+                                <li><button class="dropdown-item" @onclick='() => currentView = "manageServiceTypes"'>Gerenciar Tipos de Serviço</button></li>
+                                <li><hr class="dropdown-divider"></li>
+                                <li><button class="dropdown-item" @onclick="Logout">Sair</button></li>
+                            </ul>
+                        </div>*@
+                        <div class="dropdown @(dropdownVisible ? "show" : "")">
+                            <button @onclick="ToggleDropdown" @onclick:stopPropagation class="btn btn-light dropdown-toggle">
+                                <i class="bi bi-person-circle me-1"></i> @userName
+                            </button>
+
+                            @if (dropdownVisible)
+                            {
+                                <div class="dropdown-menu show">
+                                    <button class="dropdown-item" @onclick='() => SelectOption("search")'>Página Inicial</button>
+                                    <button class="dropdown-item" @onclick='() => SelectOption("GerenciarUsuarios")'>Gerenciar Usuários</button>
+                                    <button class="dropdown-item" @onclick='() => SelectOption("GerenciarTiposServico")'>Gerenciar Tipos de Serviço</button>
+                                    <div class="dropdown-divider"></div>
+                                    <button class="dropdown-item" @onclick="Logout">Sair</button>
+                                </div>
+                            }
+                        </div>
+                    }
+                    else
+                    {
+                        <button @onclick='() => currentView = "login"' class="btn btn-light">
+                            <i class="bi bi-box-arrow-in-right me-1"></i> Entrar
+                        </button>
+                    }
+                </div>
+            </div>
+        </div>
+    </header>
+
+    @switch (currentView)
+    {
+        case "search":
+            <!-- Banner principal com imagem de Baixo Guandú -->
+            <div class="position-relative">
+                <div class="bg-image" style="background-image: url('images/baixo-guandu-banner.jpg'); height: 300px; background-size: cover; background-position: center;"></div>
+                <div class="position-absolute top-0 start-0 w-100 h-100 d-flex align-items-center justify-content-center" style="background-color: rgba(0,0,0,0.4);">
+                    <div class="container text-center text-white">
+                        <h2 class="display-5 fw-bold mb-4">Encontre Profissionais em Baixo Guandú</h2>
+                        <div class="row justify-content-center">
+                            <div class="col-md-8">
+                                <div class="input-group mb-3">
+                                    <select class="form-select" @bind="tipoServicoSelecionado">
+                                        <option value="0">Selecione um tipo de serviço...</option>
+                                        @if (tiposServico != null)
+                                        {
+                                            @foreach (var tipo in tiposServico)
+                                            {
+                                                <option value="@tipo.TpServico">@tipo.DsTpServico</option>
+                                            }
+                                        }
+                                    </select>
+                                    <button class="btn btn-success" type="button" @onclick="BuscarProfissionais">
+                                        <i class="bi bi-search me-1"></i> Buscar
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Conteúdo principal - Resultados da busca -->
+            <div class="container py-5">
+                @if (mensagemErro != null)
+                {
+                    <div class="alert alert-danger" role="alert">
+                        @mensagemErro
+                    </div>
+                }
+
+                @if (buscaRealizada && profissionais.Count == 0)
+                {
+                    <div class="alert alert-info" role="alert">
+                        Nenhum profissional encontrado para o tipo de serviço selecionado.
+                    </div>
+                }
+
+                @if (profissionais.Count > 0)
+                {
+                    <h3 class="mb-4">Profissionais Encontrados</h3>
+                    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+                        @foreach (var profissional in profissionais)
+                        {
+                            <div class="col">
+                                <div class="card h-100 shadow-sm">
+                                    <div class="card-body">
+                                        <div class="d-flex align-items-center mb-3">
+                                            <div class="avatar bg-primary text-white rounded-circle d-flex align-items-center justify-content-center me-3" style="width: 50px; height: 50px;">
+                                                <span class="h5 mb-0">@profissional.Nome.Substring(0, 1).ToUpper()</span>
+                                            </div>
+                                            <div>
+                                                <h5 class="card-title mb-0">@profissional.Nome</h5>
+                                                <p class="card-text text-muted small mb-0">@GetTipoServicoDescricao(profissional.TpServico)</p>
+                                            </div>
+                                        </div>
+                                        <hr />
+                                        <div class="d-flex justify-content-between align-items-center">
+                                            <div>
+                                                <i class="bi bi-telephone me-2"></i>
+                                                <span>@FormatarTelefone(profissional.Telefone)</span>
+                                            </div>
+                                            <div>
+                                                <i class="bi bi-envelope me-2"></i>
+                                                <span>@profissional.Email</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                }
+                else if (!buscaRealizada)
+                {
+                    <div class="text-center py-5">
+                        <img src="images/search-illustration.svg" alt="Busca" class="img-fluid mb-4" style="max-height: 200px;" />
+                        <h3>Selecione um tipo de serviço para encontrar profissionais</h3>
+                        <p class="text-muted">Escolha o tipo de serviço desejado e clique em buscar para encontrar profissionais em Baixo Guandú.</p>
+                    </div>
+                }
+            </div>
+            break;
+
+        case "login":
+            <Login />
+            break;
+
+        case "GerenciarUsuarios":
+            <!-- Conteúdo de Gerenciamento de Usuários -->
+            @*<div class="container py-5">
+                <h2 class="mb-4">Gerenciamento de Usuários</h2>
+                <div class="alert alert-info">
+                    <i class="bi bi-info-circle me-2"></i> Esta área está em desenvolvimento. Em breve você poderá gerenciar os usuários do sistema.
+                </div>
+                <button class="btn btn-primary" @onclick='() => currentView = "search"'>
+                    <i class="bi bi-arrow-left me-2"></i> Voltar para página inicial
+                </button>
+            </div>
+            *@
+			<GerenciarUsuarios />
+            break;
+
+        case "GerenciarTiposServico":
+            <!-- Conteúdo de Gerenciamento de Tipos de Serviço -->
+            @*<div class="container py-5">
+                <h2 class="mb-4">Gerenciamento de Tipos de Serviço</h2>
+                <div class="alert alert-info">
+                    <i class="bi bi-info-circle me-2"></i> Esta área está em desenvolvimento. Em breve você poderá gerenciar os tipos de serviço do sistema.
+                </div>
+                <button class="btn btn-primary" @onclick='() => currentView = "search"'>
+                    <i class="bi bi-arrow-left me-2"></i> Voltar para página inicial
+                </button>
+            </div>*@
+            <GerenciarTiposServico />
+            break;
+    }
+
+    <!-- Rodapé -->
+    <footer class="bg-dark text-white py-4">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 mb-3 mb-md-0">
+                    <h5>Serviços Baixo Guandú</h5>
+                    <p class="mb-0">Conectando você aos melhores profissionais da cidade.</p>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <p class="mb-0">&copy; 2025 Prefeitura de Baixo Guandú - ES</p>
+                    <p class="mb-0 small">Todos os direitos reservados</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+</div>
+
+@code {
+
+    private bool dropdownVisible = false;
+
+    private void ToggleDropdown()
+    {
+        dropdownVisible = !dropdownVisible;
+    }
+
+    // Controle de visualização
+    private string currentView = "search"; // "search", "login", "manageUsers", "manageServiceTypes"
+
+    // Propriedades para busca
+    private List<TipoServicoDTO> tiposServico = new List<TipoServicoDTO>();
+    private List<UsuarioDTO> profissionais = new List<UsuarioDTO>();
+    private int tipoServicoSelecionado = 0;
+    private string mensagemErro = null;
+    private bool buscaRealizada = false;
+
+    // Propriedades para autenticação
+    private string email = "";
+    private string senha = "";
+    private bool processandoLogin = false;
+    private bool isAuthenticated = false;
+    private string userName = "Usuário";
+
+    private void SelectOption(string view)
+    {
+        currentView = view;
+        dropdownVisible = false;
+    }
+
+    // Fechar dropdown ao clicar fora
+    /*protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            var reference = DotNetObjectReference.Create(this);
+            await JSRuntime.InvokeVoidAsync("setupClickOutside", reference);
+        }
+    }
+
+    [JSInvokable]
+    public void CloseDropdown()
+    {
+        dropdownVisible = false;
+        StateHasChanged();
+    }*/
+
+    protected override async Task OnInitializedAsync()
+    {
+        try
+        {
+            // Verificar se já está autenticado (via localStorage)
+            await CheckAuthenticationStatus();
+
+            // Carregar tipos de serviço
+            tiposServico = await Http.GetFromJsonAsync<List<TipoServicoDTO>>("https://localhost:7240/api/TipoServico");
+            Console.WriteLine($"Tipos de serviço carregados: {tiposServico.Count}");
+            Logger.LogInformation($"Tipos de serviço carregados: {tiposServico.Count}");
+        }
+        catch (Exception ex)
+        {
+            mensagemErro = $"Erro ao carregar tipos de serviço: {ex.Message}";
+            Console.WriteLine($"Erro ao carregar tipos de serviço: {ex}");
+            Logger.LogInformation($"Erro ao carregar tipos de serviço: {ex}");
+        }
+    }
+
+    private async Task CheckAuthenticationStatus()
+    {
+        try
+        {
+            var token = await JSRuntime.InvokeAsync<string>("localStorage.getItem", "auth_token");
+            isAuthenticated = !string.IsNullOrEmpty(token);
+
+            if (isAuthenticated)
+            {
+                // Inicializar dropdowns após a renderização
+                await JSRuntime.InvokeVoidAsync("initializeDropdowns");
+                userName = await JSRuntime.InvokeAsync<string>("localStorage.getItem", "user_name") ?? "Usuário";
+            }
+        }
+        catch
+        {
+            isAuthenticated = false;
+        }
+    }
+
+    private async Task BuscarProfissionais()
+    {
+        if (tipoServicoSelecionado == 0)
+        {
+            mensagemErro = "Por favor, selecione um tipo de serviço.";
+            Logger.LogInformation("Por favor, selecione um tipo de serviço.");
+            return;
+        }
+
+        mensagemErro = null;
+        buscaRealizada = true;
+
+        try
+        {
+            // Opção 1: Buscar todos os usuários e filtrar no cliente
+            var todosUsuarios = await Http.GetFromJsonAsync<List<UsuarioDTO>>("https://localhost:7240/api/Usuario");
+            Console.WriteLine($"Total de usuários recebidos: {todosUsuarios?.Count ?? 0}");
+            Logger.LogInformation($"Total de usuários recebidos: {todosUsuarios?.Count ?? 0}");
+
+            // Depuração - verificar os dados recebidos
+            if (todosUsuarios != null && todosUsuarios.Any())
+            {
+                var primeiro = todosUsuarios.First();
+                Console.WriteLine($"Primeiro usuário - ID: {primeiro.CdUsuario}, Nome: {primeiro.Nome}, TpServico: {primeiro.TpServico}, Status: {primeiro.CdStatus}");
+                Logger.LogInformation($"Primeiro usuário - ID: {primeiro.CdUsuario}, Nome: {primeiro.Nome}, TpServico: {primeiro.TpServico}, Status: {primeiro.CdStatus}");
+
+                // Verificar quantos usuários correspondem ao filtro
+                var usuariosFiltrados = todosUsuarios.Where(u => u.TpServico == tipoServicoSelecionado).ToList();
+                Console.WriteLine($"Usuários com TpServico={tipoServicoSelecionado}: {usuariosFiltrados.Count}");
+                Logger.LogInformation($"Usuários com TpServico={tipoServicoSelecionado}: {usuariosFiltrados.Count}");
+
+                var usuariosAtivos = todosUsuarios.Where(u => u.CdStatus == 1).ToList();
+                Console.WriteLine($"Usuários com CdStatus=1: {usuariosAtivos.Count}");
+                Logger.LogInformation($"Usuários com CdStatus=1: {usuariosAtivos.Count}");
+
+                var usuariosFiltroPrincipal = todosUsuarios.Where(u => u.TpServico == tipoServicoSelecionado && u.CdStatus == 1).ToList();
+                Console.WriteLine($"Usuários com TpServico={tipoServicoSelecionado} e CdStatus=1: {usuariosFiltroPrincipal.Count}");
+                Logger.LogInformation($"Usuários com TpServico={tipoServicoSelecionado} e CdStatus=1: {usuariosFiltroPrincipal.Count}");
+            }
+
+            // Aplicar filtro
+            profissionais = todosUsuarios
+                .Where(u => u.TpServico == tipoServicoSelecionado && u.CdStatus == 1) // Assumindo que status 1 é ativo
+                .ToList();
+
+            Console.WriteLine($"Profissionais filtrados: {profissionais.Count}");
+
+            // Se não encontrou nenhum profissional, tente buscar sem o filtro de status
+            if (profissionais.Count == 0)
+            {
+                Console.WriteLine("Tentando buscar sem filtro de status...");
+                Logger.LogInformation("Tentando buscar sem filtro de status...");
+
+                profissionais = todosUsuarios
+                    .Where(u => u.TpServico == tipoServicoSelecionado)
+                    .ToList();
+
+                Console.WriteLine($"Profissionais filtrados (apenas por tipo): {profissionais.Count}");
+                Logger.LogInformation($"Profissionais filtrados (apenas por tipo): {profissionais.Count}");
+            }
+        }
+        catch (Exception ex)
+        {
+            mensagemErro = $"Erro ao buscar profissionais: {ex.Message}";
+            Console.WriteLine($"Erro ao buscar profissionais: {ex}");
+            profissionais.Clear();
+        }
+    }
+
+    /*private async Task RealizarLogin()
+    {
+        processandoLogin = true;
+        mensagemErro = null;
+
+        try
+        {
+            // Validação básica
+            if (string.IsNullOrEmpty(email) || string.IsNullOrEmpty(senha))
+            {
+                mensagemErro = "Por favor, preencha todos os campos.";
+                processandoLogin = false;
+                return;
+            }
+
+            // Criar modelo de login com o campo 'nome' que é esperado pelo AuthController
+            var loginModel = new
+            {
+                email = email,
+                password = senha,
+                nome = email.Split('@')[0] // Usando parte do email como nome temporário
+            };
+
+            Logger.LogInformation($"Enviando requisição de login para: https://localhost:7240/api/auth/login");
+            Logger.LogInformation($"Payload: email={email}, nome={loginModel.nome}");
+
+            // Enviar requisição para a API com a URL corrigida
+            var response = await Http.PostAsJsonAsync("https://localhost:7240/api/auth/login", loginModel);
+
+            if (response.IsSuccessStatusCode)
+            {
+                // Obter token JWT da resposta
+                var resultado = await response.Content.ReadFromJsonAsync<LoginResponse>();
+                Logger.LogInformation("Login bem-sucedido, token recebido");
+
+                if (resultado != null && !string.IsNullOrEmpty(resultado.Token))
+                {
+                    // Armazenar token no localStorage
+                    await JSRuntime.InvokeVoidAsync("localStorage.setItem", "auth_token", resultado.Token);
+
+                    // Extrair informações do token (na implementação real, decodificaria o JWT)
+                    await JSRuntime.InvokeVoidAsync("localStorage.setItem", "user_name", email);
+                    await JSRuntime.InvokeVoidAsync("localStorage.setItem", "user_type", "Administrador");
+
+                    // Atualizar estado de autenticação
+                    isAuthenticated = true;
+                    userName = email;
+
+                    // Redirecionar para a página inicial
+                    currentView = "search";
+                }
+                else
+                {
+                    mensagemErro = "Erro ao processar resposta do servidor.";
+                    Logger.LogError("Token não encontrado na resposta");
+                }
+            }
+            else
+            {
+                // Tratar erro de autenticação
+                var errorContent = await response.Content.ReadAsStringAsync();
+                Logger.LogError($"Erro na resposta: {response.StatusCode}, Conteúdo: {errorContent}");
+
+                if (response.StatusCode == System.Net.HttpStatusCode.Unauthorized)
+                {
+                    mensagemErro = "Email ou senha incorretos.";
+                }
+                else
+                {
+                    mensagemErro = $"Erro ao realizar login: {response.StatusCode}";
+                    if (!string.IsNullOrEmpty(errorContent))
+                    {
+                        Logger.LogError($"Detalhes do erro: {errorContent}");
+                    }
+                }
+            }
+        }
+        catch (Exception ex)
+        {
+            mensagemErro = $"Erro ao processar login: {ex.Message}";
+            Logger.LogError($"Exceção durante login: {ex}");
+        }
+        finally
+        {
+            processandoLogin = false;
+        }
+    }*/
+
+    private async Task Logout()
+    {
+        // Limpar localStorage e atualizar estado
+        await JSRuntime.InvokeVoidAsync("localStorage.removeItem", "auth_token");
+        await JSRuntime.InvokeVoidAsync("localStorage.removeItem", "user_name");
+        await JSRuntime.InvokeVoidAsync("localStorage.removeItem", "user_type");
+
+        isAuthenticated = false;
+        userName = "";
+        currentView = "search";
+    }
+
+    private string GetTipoServicoDescricao(int tipoServicoId)
+    {
+        var tipoServico = tiposServico.FirstOrDefault(t => t.TpServico == tipoServicoId);
+        return tipoServico?.DsTpServico ?? "Serviço não especificado";
+    }
+
+    private string FormatarTelefone(string telefone)
+    {
+        if (string.IsNullOrEmpty(telefone))
+            return "";
+
+        // Remover caracteres não numéricos
+        var numeros = new string(telefone.Where(char.IsDigit).ToArray());
+
+        // Formatar conforme o padrão brasileiro
+        if (numeros.Length == 11) // Celular com DDD
+            return $"({numeros.Substring(0, 2)}) {numeros.Substring(2, 5)}-{numeros.Substring(7)}";
+        else if (numeros.Length == 10) // Fixo com DDD
+            return $"({numeros.Substring(0, 2)}) {numeros.Substring(2, 4)}-{numeros.Substring(6)}";
+        else
+            return telefone; // Retorna original se não conseguir formatar
+    }
+
+    private class LoginResponse
+    {
+        public string Token { get; set; }
+    }
+}

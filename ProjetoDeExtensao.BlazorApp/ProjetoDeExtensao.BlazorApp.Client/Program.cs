@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
+using ProjetoDeExtensao.BlazorApp.Client.Pages;
 
 namespace ProjetoDeExtensao.BlazorApp.Client
 {
@@ -8,7 +9,23 @@ namespace ProjetoDeExtensao.BlazorApp.Client
         {
             var builder = WebAssemblyHostBuilder.CreateDefault(args);
 
-            await builder.Build().RunAsync();
+			// Para Blazor WebAssembly
+			//builder.Services.AddScoped<Login>();
+
+			builder.Services.AddScoped(sp => new HttpClient
+			{
+				BaseAddress = new Uri(builder.HostEnvironment.BaseAddress)
+			});
+
+			builder.Services.AddScoped(sp =>
+			{
+				var config = sp.GetRequiredService<IConfiguration>();
+				var apiUrl = config["ApiUrl"] ?? builder.HostEnvironment.BaseAddress;
+				Console.WriteLine($"API URL: {apiUrl}");
+				return new HttpClient { BaseAddress = new Uri(apiUrl) };
+			});
+
+			await builder.Build().RunAsync();
         }
     }
 }

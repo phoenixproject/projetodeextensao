@@ -1,0 +1,208 @@
+/* Estilos personalizados para o tema de Baixo Guandú */
+
+:root {
+  --primary-color: #0056b3;
+  --secondary-color: #28a745;
+  --accent-color: #ffc107;
+  --dark-color: #343a40;
+  --light-color: #f8f9fa;
+  --bg-light: #f5f8fa;
+  --text-color: #333;
+  --border-radius: 0.375rem;
+  --box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+}
+
+/* Estilos gerais */
+body {
+  font-family: 'Nunito', 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  color: var(--text-color);
+  background-color: var(--bg-light);
+}
+
+/* Personalização do Bootstrap */
+.bg-primary {
+  background-color: var(--primary-color) !important;
+}
+
+.btn-primary {
+  background-color: var(--primary-color);
+  border-color: var(--primary-color);
+}
+
+.btn-primary:hover, .btn-primary:focus {
+  background-color: #004494;
+  border-color: #004494;
+}
+
+.btn-success {
+  background-color: var(--secondary-color);
+  border-color: var(--secondary-color);
+}
+
+.btn-success:hover, .btn-success:focus {
+  background-color: #218838;
+  border-color: #218838;
+}
+
+/* Cabeçalho */
+header {
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Cards */
+.card {
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow);
+  border: none;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
+}
+
+/* Avatar */
+.avatar {
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background-color: var(--primary-color);
+  color: white;
+  font-weight: bold;
+}
+
+/* Tabelas */
+.table {
+  border-collapse: separate;
+  border-spacing: 0;
+}
+
+.table th {
+  background-color: rgba(0, 86, 179, 0.05);
+  border-bottom: 2px solid var(--primary-color);
+}
+
+.table-hover tbody tr:hover {
+  background-color: rgba(0, 86, 179, 0.03);
+}
+
+/* Formulários */
+.form-control:focus, .form-select:focus {
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 0.25rem rgba(0, 86, 179, 0.25);
+}
+
+.input-group-text {
+  background-color: var(--primary-color);
+  color: white;
+  border-color: var(--primary-color);
+}
+
+/* Botões de ação */
+.btn-group .btn {
+  margin-right: 0.25rem;
+}
+
+/* Rodapé */
+footer {
+  margin-top: auto;
+}
+
+/* Responsividade para dispositivos móveis */
+@media (max-width: 767.98px) {
+  .container {
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+  
+  .card-body {
+    padding: 1rem;
+  }
+  
+  .table-responsive {
+    border-radius: var(--border-radius);
+  }
+  
+  .modal-dialog {
+    margin: 0.5rem;
+  }
+}
+
+/* Responsividade para tablets */
+@media (min-width: 768px) and (max-width: 991.98px) {
+  .container {
+    max-width: 95%;
+  }
+}
+
+/* Animações */
+.fade-in {
+  animation: fadeIn 0.5s ease-in;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* Banner e imagens de fundo */
+.bg-image {
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+/* Badges personalizados */
+.badge {
+  padding: 0.35em 0.65em;
+  font-weight: 600;
+}
+
+/* Alertas personalizados */
+.alert {
+  border: none;
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow);
+}
+
+.alert-success {
+  background-color: rgba(40, 167, 69, 0.1);
+  color: #218838;
+}
+
+.alert-danger {
+  background-color: rgba(220, 53, 69, 0.1);
+  color: #dc3545;
+}
+
+/* Modais */
+.modal-content {
+  border: none;
+  border-radius: var(--border-radius);
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+}
+
+.modal-header {
+  background-color: var(--primary-color);
+  color: white;
+  border-bottom: none;
+}
+
+.modal-header .btn-close {
+  color: white;
+  opacity: 0.8;
+}
+
+/* Dropdown personalizado */
+.dropdown-menu {
+  border: none;
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+}
+
+.dropdown-item:active {
+  background-color: var(--primary-color);
+}
