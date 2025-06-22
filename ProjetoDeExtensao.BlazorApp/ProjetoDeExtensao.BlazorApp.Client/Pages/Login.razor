@@ -4,10 +4,12 @@
 @inject HttpClient Http
 @inject NavigationManager NavigationManager
 @inject IJSRuntime JSRuntime
+@inject ILogger<Login> Logger
+@rendermode @(new InteractiveWebAssemblyRenderMode(prerender: false))
 
 <div class="container-fluid px-0">
     <!-- Cabeçalho com logo e nome do sistema -->
-    <header class="bg-primary text-white py-3">
+    @*<header class="bg-primary text-white py-3">
         <div class="container">
             <div class="row align-items-center">
                 <div class="col-md-2 col-sm-3 text-center text-sm-start mb-2 mb-sm-0">
@@ -24,7 +26,7 @@
                 </div>
             </div>
         </div>
-    </header>
+    </header>*@
 
     <!-- Conteúdo principal - Login -->
     <div class="container py-5">
@@ -105,6 +107,7 @@
 </div>
 
 @code {
+    private LoginModel loginModel = new();
     private string email = "";
     private string senha = "";
     private bool processandoLogin = false;
@@ -121,57 +124,93 @@
             if (string.IsNullOrEmpty(email) || string.IsNullOrEmpty(senha))
             {
                 mensagemErro = "Por favor, preencha todos os campos.";
+                Logger.LogWarning("Tentativa de login com campos vazios");
                 return;
             }
 
+            // Extrair nome de usuário do email para personalização
+            string nomeUsuario = ObterNomeUsuarioDoEmail(email);
+
             // Criar modelo de login
-            var loginModel = new
-            {
-                email = email,
-                password = senha
-            };
+            loginModel.email = email;
+            loginModel.password = senha;
+            loginModel.nome = nomeUsuario;
+            loginModel.permissao = "Admin";
+
+            // Log detalhado antes da requisição
+            Logger.LogInformation($"Enviando requisição de login para: https://localhost:7240/api/auth/login");
+            Logger.LogInformation($"Payload: email={email}, nome={loginModel.nome}, permissao={loginModel.permissao}");
 
             // Enviar requisição para a API
-            var response = await Http.PostAsJsonAsync("login", loginModel);
+            var response = await Http.PostAsJsonAsync("https://localhost:7240/api/auth/login", loginModel);
 
             if (response.IsSuccessStatusCode)
             {
                 // Obter token JWT da resposta
                 var resultado = await response.Content.ReadFromJsonAsync<LoginResponse>();
-                
+                Logger.LogInformation("Login bem-sucedido, token recebido");
+
                 if (resultado != null && !string.IsNullOrEmpty(resultado.Token))
                 {
                     // Armazenar token no localStorage
                     await JSRuntime.InvokeVoidAsync("localStorage.setItem", "auth_token", resultado.Token);
-                    
-                    // Extrair informações do token (na implementação real, decodificaria o JWT)
-                    await JSRuntime.InvokeVoidAsync("localStorage.setItem", "user_name", "Usuário Autenticado");
+
+                    // Armazenar nome de usuário personalizado
+                    await JSRuntime.InvokeVoidAsync("localStorage.setItem", "user_name", nomeUsuario);
                     await JSRuntime.InvokeVoidAsync("localStorage.setItem", "user_type", "Administrador");
-                    
+
+                    Logger.LogInformation($"Usuário {nomeUsuario} autenticado com sucesso");
+
                     // Redirecionar para a página inicial
                     NavigationManager.NavigateTo("/", true);
                 }
                 else
                 {
                     mensagemErro = "Erro ao processar resposta do servidor.";
+                    Logger.LogError("Token não encontrado na resposta");
                 }
             }
             else
             {
-                // Tratar erro de autenticação
+                // Tratar erro de autenticação com detalhes
+                var errorContent = await response.Content.ReadAsStringAsync();
+                Logger.LogError($"Erro na resposta: {response.StatusCode}, Conteúdo: {errorContent}");
+
                 if (response.StatusCode == System.Net.HttpStatusCode.Unauthorized)
                 {
                     mensagemErro = "Email ou senha incorretos.";
                 }
+                else if (response.StatusCode == System.Net.HttpStatusCode.BadRequest)
+                {
+                    // Tentar extrair mensagem de erro específica
+                    try
+                    {
+                        var errorObj = JsonSerializer.Deserialize<ErrorResponse>(errorContent);
+                        if (errorObj != null && errorObj.Errors != null && errorObj.Errors.Count > 0)
+                        {
+                            mensagemErro = $"Erro de validação: {string.Join(", ", errorObj.Errors.Values.SelectMany(v => v))}";
+                        }
+                        else
+                        {
+                            mensagemErro = $"Erro ao realizar login: {response.StatusCode}";
+                        }
+                    }
+                    catch
+                    {
+                        mensagemErro = $"Erro ao realizar login: {response.StatusCode}";
+                    }
+                }
                 else
                 {
                     mensagemErro = $"Erro ao realizar login: {response.StatusCode}";
+                    Logger.LogError($"Detalhes do erro: {errorContent}");
                 }
             }
         }
         catch (Exception ex)
         {
             mensagemErro = $"Erro ao processar login: {ex.Message}";
+            Logger.LogError($"Exceção durante login: {ex}");
         }
         finally
         {
@@ -179,8 +218,35 @@
         }
     }
 
+    // Método para extrair um nome de usuário do email
+    private string ObterNomeUsuarioDoEmail(string email)
+    {
+        if (string.IsNullOrEmpty(email))
+            return "Usuário";
+
+        // Extrair parte antes do @
+        string nomeParcial = email.Split('@')[0];
+
+        // Capitalizar primeira letra de cada palavra
+        string[] partes = nomeParcial.Split('.', '_', '-');
+        for (int i = 0; i < partes.Length; i++)
+        {
+            if (!string.IsNullOrEmpty(partes[i]) && partes[i].Length > 0)
+            {
+                partes[i] = char.ToUpper(partes[i][0]) + partes[i].Substring(1);
+            }
+        }
+
+        return string.Join(" ", partes);
+    }
+
     private class LoginResponse
     {
         public string Token { get; set; }
+    }
+
+    private class ErrorResponse
+    {
+        public Dictionary<string, List<string>> Errors { get; set; }
     }
 }

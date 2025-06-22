@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
+using ProjetoDeExtensao.BlazorApp.Client.Pages;
 
 namespace ProjetoDeExtensao.BlazorApp.Client
 {
@@ -7,6 +8,9 @@ namespace ProjetoDeExtensao.BlazorApp.Client
         static async Task Main(string[] args)
         {
             var builder = WebAssemblyHostBuilder.CreateDefault(args);
+
+			// Para Blazor WebAssembly
+			//builder.Services.AddScoped<Login>();
 
 			builder.Services.AddScoped(sp => new HttpClient
 			{

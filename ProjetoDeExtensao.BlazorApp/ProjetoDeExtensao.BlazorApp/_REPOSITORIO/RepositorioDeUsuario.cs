@@ -37,6 +37,18 @@ namespace ProjetoDeExtensao.BlazorApp._REPOSITORIO
 			return Contexto.Usuarios.Where(l => l.Email.Equals(email) && l.Password.Equals(password)).FirstOrDefault();
 		}
 
+		public Boolean VerificarSeExisteUsuarioPorEmailESenha(string email, string password)
+		{
+			if(Contexto.Usuarios.Where(l => l.Email.Equals(email) && l.Password.Equals(password)).Count() > 0)
+			{
+				return true;
+			}
+			else
+			{
+				return false;
+			}
+		}
+
 		public bool VerificarSeUsuarioComMesmoEmailJaExiste(Usuario usuario)
 		{
 			if (Contexto.Usuarios.Where(l => l.Email.Equals(usuario.Email)).Count() > 0)
@@ -49,13 +61,19 @@ namespace ProjetoDeExtensao.BlazorApp._REPOSITORIO
 			}
 		}
 
-		public void InserirUsuario(Usuario usuario)
+		public Boolean InserirUsuario(Usuario usuario)
 		{
+			Boolean resultado = false;
+
 			if (!VerificarSeUsuarioComMesmoEmailJaExiste(usuario))
 			{
 				Contexto.Usuarios.Add(usuario);
 				Contexto.SaveChanges();
+
+				resultado = true;
 			}
+
+			return resultado;
 		}
 
 		public int BuscarQuantidadeRegistros()
@@ -69,12 +87,38 @@ namespace ProjetoDeExtensao.BlazorApp._REPOSITORIO
 			Contexto.SaveChanges();
 		}
 
-		public void AtualizarUsuario(Usuario usuario)
+		public Boolean RemoverUsuario(int id)
 		{
+			Boolean resultado = false;
+
+			try
+			{
+				Usuario usuario = ObterUsuarioPorId(id);
+
+				Contexto.Usuarios.Remove(usuario);
+				Contexto.SaveChanges();
+
+				resultado = true;
+			}
+			catch(Exception ex)
+			{
+				Console.WriteLine($"Erro ao remover usuário: {ex.Message}");
+				resultado = false;
+			}
+
+			return resultado;
+		}
+
+		public Boolean AtualizarUsuario(Usuario usuario)
+		{
+			Boolean resultado = false;
+
 			if (!VerificarSeUsuarioComMesmoEmailJaExiste(usuario))
 			{
 				Contexto.Entry(usuario).State = EntityState.Modified;
 				Contexto.SaveChanges();
+
+				resultado = true;
 			}
 			else
 			{
@@ -85,8 +129,12 @@ namespace ProjetoDeExtensao.BlazorApp._REPOSITORIO
 
 					Contexto.Entry(usuario).State = EntityState.Modified;
 					Contexto.SaveChanges();
+
+					resultado = true;
 				}
 			}
+
+			return resultado;
 		}
 	}
 }

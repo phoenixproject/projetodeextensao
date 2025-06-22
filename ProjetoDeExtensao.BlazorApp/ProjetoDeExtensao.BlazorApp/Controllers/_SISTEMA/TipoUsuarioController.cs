@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using ProjetoDeExtensao.BlazorApp._APLICACAO;
 using ProjetoDeExtensao.BlazorApp._MODEL._SISTEMAS;
 using ProjetoDeExtensao.Shared._MODEL;

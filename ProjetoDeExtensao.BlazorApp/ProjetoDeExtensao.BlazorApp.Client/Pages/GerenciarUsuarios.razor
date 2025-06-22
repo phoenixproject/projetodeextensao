@@ -5,74 +5,205 @@
 @inject NavigationManager NavigationManager
 @inject IJSRuntime JSRuntime
 
-<AuthorizeView>
-    <Authorized>
-        <div class="container-fluid px-0">
-            <!-- Cabeçalho com logo e nome do sistema -->
-            <header class="bg-primary text-white py-3">
-                <div class="container">
-                    <div class="row align-items-center">
-                        <div class="col-md-2 col-sm-3 text-center text-sm-start mb-2 mb-sm-0">
-                            <img src="images/logo-baixo-guandu.png" alt="Logo Baixo Guandú" class="img-fluid" style="max-height: 80px;" />
-                        </div>
-                        <div class="col-md-8 col-sm-6 text-center text-sm-start">
-                            <h1 class="h3 mb-0">Serviços Baixo Guandú</h1>
-                            <p class="mb-0 d-none d-sm-block">Gerenciamento de Usuários</p>
-                        </div>
-                        <div class="col-md-2 col-sm-3 text-center text-sm-end mt-2 mt-sm-0">
-                            <div class="dropdown">
-                                <button class="btn btn-light dropdown-toggle" type="button" id="userMenu" data-bs-toggle="dropdown" aria-expanded="false">
-                                    <i class="bi bi-person-circle me-1"></i> Nome
-                                </button>
-                                <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userMenu">
-                                    <li><a class="dropdown-item" href="/">Página Inicial</a></li>
-                                    <li><a class="dropdown-item" href="/gerenciar-tipos-servico">Gerenciar Tipos de Serviço</a></li>
-                                    <li><hr class="dropdown-divider"></li>
-                                    <li><button class="dropdown-item" @onclick="Logout">Sair</button></li>
-                                </ul>
-                            </div>
-                        </div>
+<div class="container-fluid px-0">
+    <!-- Cabeçalho com logo e nome do sistema -->
+    @*<header class="bg-primary text-white py-3">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-md-2 col-sm-3 text-center text-sm-start mb-2 mb-sm-0">
+                    <img src="images/logo-baixo-guandu.png" alt="Logo Baixo Guandú" class="img-fluid" style="max-height: 80px;" />
+                </div>
+                <div class="col-md-8 col-sm-6 text-center text-sm-start">
+                    <h1 class="h3 mb-0">Serviços Baixo Guandú</h1>
+                    <p class="mb-0 d-none d-sm-block">Gerenciamento de Usuários</p>
+                </div>
+                <div class="col-md-2 col-sm-3 text-center text-sm-end mt-2 mt-sm-0">
+                    <div class="dropdown">
+                        <button class="btn btn-light dropdown-toggle" type="button" id="userMenu" data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="bi bi-person-circle me-1"></i> @userName
+                        </button>
+                        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userMenu">
+                            <li><a class="dropdown-item" href="/">Página Inicial</a></li>
+                            <li><a class="dropdown-item" href="/gerenciar-tipos-servico">Gerenciar Tipos de Serviço</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><button class="dropdown-item" @onclick="Logout">Sair</button></li>
+                        </ul>
                     </div>
                 </div>
-            </header>
+            </div>
+        </div>
+    </header>*@
 
-            <!-- Conteúdo principal - Gerenciamento de Usuários -->
-            <div class="container py-4">
-                <div class="d-flex justify-content-between align-items-center mb-4">
-                    <h2>Gerenciamento de Usuários</h2>
-                    <button class="btn btn-success" @onclick="() => AbrirModalUsuario(null)">
-                        <i class="bi bi-plus-circle me-1"></i> Novo Usuário
-                    </button>
+    <!-- Conteúdo principal - Gerenciamento de Usuários -->
+    <div class="container py-4">
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <h2>Gerenciamento de Usuários</h2>
+            <button class="btn btn-success" @onclick="() => AbrirModalUsuario(null)">
+                <i class="bi bi-plus-circle me-1"></i> Novo Usuário
+            </button>
+        </div>
+
+        @if (mensagemErro != null)
+        {
+            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                @mensagemErro
+                <button type="button" class="btn-close" @onclick="() => mensagemErro = null" aria-label="Close"></button>
+            </div>
+        }
+
+        @if (mensagemSucesso != null)
+        {
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                @mensagemSucesso
+                <button type="button" class="btn-close" @onclick="() => mensagemSucesso = null" aria-label="Close"></button>
+            </div>
+        }
+
+        <!-- Filtros -->
+        <div class="card mb-4">
+            <div class="card-body">
+                <div class="row g-3">
+                    <div class="col-md-4">
+                        <label for="filtroNome" class="form-label">Nome</label>
+                        <input type="text" class="form-control" id="filtroNome" @bind="filtroNome" placeholder="Filtrar por nome..." />
+                    </div>
+                    <div class="col-md-3">
+                        <label for="filtroTipoUsuario" class="form-label">Tipo de Usuário</label>
+                        <select class="form-select" id="filtroTipoUsuario" @bind="filtroTipoUsuario">
+                            <option value="0">Todos</option>
+                            @if (tiposUsuario != null)
+                            {
+                                @foreach (var tipo in tiposUsuario)
+                                {
+                                    <option value="@tipo.TpUsuario">@tipo.DsTpUsuario</option>
+                                }
+                            }
+                        </select>
+                    </div>
+                    <div class="col-md-3">
+                        <label for="filtroStatus" class="form-label">Status</label>
+                        <select class="form-select" id="filtroStatus" @bind="filtroStatus">
+                            <option value="0">Todos</option>
+                            @if (statusList != null)
+                            {
+                                @foreach (var status in statusList)
+                                {
+                                    <option value="@status.CdStatus">@status.DsStatus</option>
+                                }
+                            }
+                        </select>
+                    </div>
+                    <div class="col-md-2 d-flex align-items-end">
+                        <button class="btn btn-primary w-100" @onclick="FiltrarUsuarios">
+                            <i class="bi bi-search me-1"></i> Filtrar
+                        </button>
+                    </div>
                 </div>
+            </div>
+        </div>
 
-                @if (mensagemErro != null)
+        <!-- Tabela de Usuários -->
+        <div class="card">
+            <div class="card-body">
+                @if (carregando)
                 {
-                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                        @mensagemErro
-                        <button type="button" class="btn-close" @onclick="() => mensagemErro = null" aria-label="Close"></button>
+                    <div class="text-center py-4">
+                        <div class="spinner-border text-primary" role="status">
+                            <span class="visually-hidden">Carregando...</span>
+                        </div>
+                        <p class="mt-2">Carregando usuários...</p>
                     </div>
                 }
-
-                @if (mensagemSucesso != null)
+                else
                 {
-                    <div class="alert alert-success alert-dismissible fade show" role="alert">
-                        @mensagemSucesso
-                        <button type="button" class="btn-close" @onclick="() => mensagemSucesso = null" aria-label="Close"></button>
+                    <div class="table-responsive">
+                        <table class="table table-striped table-hover">
+                            <thead>
+                                <tr>
+                                    <th>Nome</th>
+                                    <th>Email</th>
+                                    <th>Telefone</th>
+                                    <th>Tipo de Usuário</th>
+                                    <th>Tipo de Serviço</th>
+                                    <th>Status</th>
+                                    <th>Ações</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @if (usuariosFiltrados.Count == 0)
+                                {
+                                    <tr>
+                                        <td colspan="7" class="text-center py-3">Nenhum usuário encontrado.</td>
+                                    </tr>
+                                }
+                                else
+                                {
+                                    @foreach (var usuario in usuariosFiltrados)
+                                    {
+                                        <tr>
+                                            <td>@usuario.Nome</td>
+                                            <td>@usuario.Email</td>
+                                            <td>@FormatarTelefone(usuario.Telefone)</td>
+                                            <td>@GetTipoUsuarioDescricao(usuario.TpUsuario)</td>
+                                            <td>@GetTipoServicoDescricao(usuario.TpServico)</td>
+                                            <td>
+                                                <span class="badge @(usuario.CdStatus == 1 ? "bg-success" : "bg-danger")">
+                                                    @GetStatusDescricao(usuario.CdStatus)
+                                                </span>
+                                            </td>
+                                            <td>
+                                                <div class="btn-group">
+                                                    <button class="btn btn-sm btn-outline-primary" @onclick="() => AbrirModalUsuario(usuario)">
+                                                        <i class="bi bi-pencil"></i>
+                                                    </button>
+                                                    <button class="btn btn-sm btn-outline-danger" @onclick="() => ConfirmarExclusao(usuario)">
+                                                        <i class="bi bi-trash"></i>
+                                                    </button>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    }
+                                }
+                            </tbody>
+                        </table>
                     </div>
                 }
+            </div>
+        </div>
+    </div>
 
-                <!-- Filtros -->
-                <div class="card mb-4">
-                    <div class="card-body">
+    <!-- Modal de Edição/Criação de Usuário -->
+    @if (mostrarModalUsuario)
+    {
+        <div class="modal fade show" style="display: block;" tabindex="-1" role="dialog">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">@(usuarioEmEdicao.CdUsuario == 0 ? "Novo Usuário" : "Editar Usuário")</h5>
+                        <button type="button" class="btn-close" @onclick="FecharModalUsuario" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
                         <div class="row g-3">
-                            <div class="col-md-4">
-                                <label for="filtroNome" class="form-label">Nome</label>
-                                <input type="text" class="form-control" id="filtroNome" @bind="filtroNome" placeholder="Filtrar por nome..." />
+                            <div class="col-md-6">
+                                <label for="nome" class="form-label">Nome</label>
+                                <input type="text" class="form-control" id="nome" @bind="usuarioEmEdicao.Nome" required />
                             </div>
-                            <div class="col-md-3">
-                                <label for="filtroTipoUsuario" class="form-label">Tipo de Usuário</label>
-                                <select class="form-select" id="filtroTipoUsuario" @bind="filtroTipoUsuario">
-                                    <option value="0">Todos</option>
+                            <div class="col-md-6">
+                                <label for="email" class="form-label">Email</label>
+                                <input type="email" class="form-control" id="email" @bind="usuarioEmEdicao.Email" required />
+                            </div>
+                            <div class="col-md-6">
+                                <label for="telefone" class="form-label">Telefone</label>
+                                <input type="tel" class="form-control" id="telefone" @bind="usuarioEmEdicao.Telefone" required />
+                            </div>
+                            <div class="col-md-6">
+                                <label for="senha" class="form-label">Senha @(usuarioEmEdicao.CdUsuario == 0 ? "" : "(deixe em branco para manter)")</label>
+                                <input type="password" class="form-control" id="senha" @bind="novaSenha" />
+                            </div>
+                            <div class="col-md-4">
+                                <label for="tipoUsuario" class="form-label">Tipo de Usuário</label>
+                                <select class="form-select" id="tipoUsuario" @bind="usuarioEmEdicao.TpUsuario" required>
+                                    <option value="0">Selecione...</option>
                                     @if (tiposUsuario != null)
                                     {
                                         @foreach (var tipo in tiposUsuario)
@@ -82,10 +213,23 @@
                                     }
                                 </select>
                             </div>
-                            <div class="col-md-3">
-                                <label for="filtroStatus" class="form-label">Status</label>
-                                <select class="form-select" id="filtroStatus" @bind="filtroStatus">
-                                    <option value="0">Todos</option>
+                            <div class="col-md-4">
+                                <label for="tipoServico" class="form-label">Tipo de Serviço</label>
+                                <select class="form-select" id="tipoServico" @bind="usuarioEmEdicao.TpServico" required>
+                                    <option value="0">Selecione...</option>
+                                    @if (tiposServico != null)
+                                    {
+                                        @foreach (var tipo in tiposServico)
+                                        {
+                                            <option value="@tipo.TpServico">@tipo.DsTpServico</option>
+                                        }
+                                    }
+                                </select>
+                            </div>
+                            <div class="col-md-4">
+                                <label for="status" class="form-label">Status</label>
+                                <select class="form-select" id="status" @bind="usuarioEmEdicao.CdStatus" required>
+                                    <option value="0">Selecione...</option>
                                     @if (statusList != null)
                                     {
                                         @foreach (var status in statusList)
@@ -95,277 +239,171 @@
                                     }
                                 </select>
                             </div>
-                            <div class="col-md-2 d-flex align-items-end">
-                                <button class="btn btn-primary w-100" @onclick="FiltrarUsuarios">
-                                    <i class="bi bi-search me-1"></i> Filtrar
-                                </button>
-                            </div>
                         </div>
                     </div>
-                </div>
-
-                <!-- Tabela de Usuários -->
-                <div class="card">
-                    <div class="card-body">
-                        <div class="table-responsive">
-                            <table class="table table-striped table-hover">
-                                <thead>
-                                    <tr>
-                                        <th>Nome</th>
-                                        <th>Email</th>
-                                        <th>Telefone</th>
-                                        <th>Tipo de Usuário</th>
-                                        <th>Tipo de Serviço</th>
-                                        <th>Status</th>
-                                        <th>Ações</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    @if (usuariosFiltrados.Count == 0)
-                                    {
-                                        <tr>
-                                            <td colspan="7" class="text-center py-3">Nenhum usuário encontrado.</td>
-                                        </tr>
-                                    }
-                                    else
-                                    {
-                                        @foreach (var usuario in usuariosFiltrados)
-                                        {
-                                            <tr>
-                                                <td>@usuario.Nome</td>
-                                                <td>@usuario.Email</td>
-                                                <td>@FormatarTelefone(usuario.Telefone)</td>
-                                                <td>@GetTipoUsuarioDescricao(usuario.TpUsuario)</td>
-                                                <td>@GetTipoServicoDescricao(usuario.TpServico)</td>
-                                                <td>
-                                                    <span class="badge @(usuario.CdStatus == 1 ? "bg-success" : "bg-danger")">
-                                                        @GetStatusDescricao(usuario.CdStatus)
-                                                    </span>
-                                                </td>
-                                                <td>
-                                                    <div class="btn-group">
-                                                        <button class="btn btn-sm btn-outline-primary" @onclick="() => AbrirModalUsuario(usuario)">
-                                                            <i class="bi bi-pencil"></i>
-                                                        </button>
-                                                        <button class="btn btn-sm btn-outline-danger" @onclick="() => ConfirmarExclusao(usuario)">
-                                                            <i class="bi bi-trash"></i>
-                                                        </button>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                        }
-                                    }
-                                </tbody>
-                            </table>
-                        </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" @onclick="FecharModalUsuario">Cancelar</button>
+                        <button type="button" class="btn btn-primary" @onclick="SalvarUsuario">Salvar</button>
                     </div>
                 </div>
             </div>
-
-            <!-- Modal de Edição/Criação de Usuário -->
-            @if (mostrarModalUsuario)
-            {
-                <div class="modal fade show" style="display: block;" tabindex="-1" role="dialog">
-                    <div class="modal-dialog modal-lg">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title">@(usuarioEmEdicao.CdUsuario == 0 ? "Novo Usuário" : "Editar Usuário")</h5>
-                                <button type="button" class="btn-close" @onclick="FecharModalUsuario" aria-label="Close"></button>
-                            </div>
-                            <div class="modal-body">
-                                <div class="row g-3">
-                                    <div class="col-md-6">
-                                        <label for="nome" class="form-label">Nome</label>
-                                        <input type="text" class="form-control" id="nome" @bind="usuarioEmEdicao.Nome" required />
-                                    </div>
-                                    <div class="col-md-6">
-                                        <label for="email" class="form-label">Email</label>
-                                        <input type="email" class="form-control" id="email" @bind="usuarioEmEdicao.Email" required />
-                                    </div>
-                                    <div class="col-md-6">
-                                        <label for="telefone" class="form-label">Telefone</label>
-                                        <input type="tel" class="form-control" id="telefone" @bind="usuarioEmEdicao.Telefone" required />
-                                    </div>
-                                    <div class="col-md-6">
-                                        <label for="senha" class="form-label">Senha @(usuarioEmEdicao.CdUsuario == 0 ? "" : "(deixe em branco para manter)")</label>
-                                        <input type="password" class="form-control" id="senha" @bind="novaSenha" />
-                                    </div>
-                                    <div class="col-md-4">
-                                        <label for="tipoUsuario" class="form-label">Tipo de Usuário</label>
-                                        <select class="form-select" id="tipoUsuario" @bind="usuarioEmEdicao.TpUsuario" required>
-                                            <option value="0">Selecione...</option>
-                                            @if (tiposUsuario != null)
-                                            {
-                                                @foreach (var tipo in tiposUsuario)
-                                                {
-                                                    <option value="@tipo.TpUsuario">@tipo.DsTpUsuario</option>
-                                                }
-                                            }
-                                        </select>
-                                    </div>
-                                    <div class="col-md-4">
-                                        <label for="tipoServico" class="form-label">Tipo de Serviço</label>
-                                        <select class="form-select" id="tipoServico" @bind="usuarioEmEdicao.TpServico" required>
-                                            <option value="0">Selecione...</option>
-                                            @if (tiposServico != null)
-                                            {
-                                                @foreach (var tipo in tiposServico)
-                                                {
-                                                    <option value="@tipo.TpServico">@tipo.DsTpServico</option>
-                                                }
-                                            }
-                                        </select>
-                                    </div>
-                                    <div class="col-md-4">
-                                        <label for="status" class="form-label">Status</label>
-                                        <select class="form-select" id="status" @bind="usuarioEmEdicao.CdStatus" required>
-                                            <option value="0">Selecione...</option>
-                                            @if (statusList != null)
-                                            {
-                                                @foreach (var status in statusList)
-                                                {
-                                                    <option value="@status.CdStatus">@status.DsStatus</option>
-                                                }
-                                            }
-                                        </select>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" @onclick="FecharModalUsuario">Cancelar</button>
-                                <button type="button" class="btn btn-primary" @onclick="SalvarUsuario">Salvar</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="modal-backdrop fade show"></div>
-            }
-
-            <!-- Modal de Confirmação de Exclusão -->
-            @if (mostrarModalConfirmacao)
-            {
-                <div class="modal fade show" style="display: block;" tabindex="-1" role="dialog">
-                    <div class="modal-dialog">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title">Confirmar Exclusão</h5>
-                                <button type="button" class="btn-close" @onclick="() => mostrarModalConfirmacao = false" aria-label="Close"></button>
-                            </div>
-                            <div class="modal-body">
-                                <p>Tem certeza que deseja excluir o usuário <strong>@(usuarioParaExcluir?.Nome)</strong>?</p>
-                                <p class="text-danger">Esta ação não pode ser desfeita.</p>
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" @onclick="() => mostrarModalConfirmacao = false">Cancelar</button>
-                                <button type="button" class="btn btn-danger" @onclick="ExcluirUsuario">Excluir</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="modal-backdrop fade show"></div>
-            }
-
-            <!-- Rodapé -->
-            <footer class="bg-dark text-white py-4 mt-5">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-md-6 mb-3 mb-md-0">
-                            <h5>Serviços Baixo Guandú</h5>
-                            <p class="mb-0">Conectando você aos melhores profissionais da cidade.</p>
-                        </div>
-                        <div class="col-md-6 text-md-end">
-                            <p class="mb-0">&copy; 2025 Prefeitura de Baixo Guandú - ES</p>
-                            <p class="mb-0 small">Todos os direitos reservados</p>
-                        </div>
-                    </div>
-                </div>
-            </footer>
         </div>
-    </Authorized>
-    <NotAuthorized>
-        <div class="container py-5 text-center">
-            <div class="card shadow-sm mx-auto" style="max-width: 500px;">
-                <div class="card-body p-5">
-                    <i class="bi bi-shield-lock text-danger" style="font-size: 4rem;"></i>
-                    <h2 class="mt-3">Acesso Restrito</h2>
-                    <p class="text-muted">Você precisa estar autenticado para acessar esta página.</p>
-                    <a href="/login" class="btn btn-primary mt-3">
-                        <i class="bi bi-box-arrow-in-right me-2"></i> Fazer Login
-                    </a>
-                    <a href="/" class="btn btn-outline-secondary mt-3 ms-2">
-                        <i class="bi bi-house me-2"></i> Página Inicial
-                    </a>
+        <div class="modal-backdrop fade show"></div>
+    }
+
+    <!-- Modal de Confirmação de Exclusão -->
+    @if (mostrarModalConfirmacao)
+    {
+        <div class="modal fade show" style="display: block;" tabindex="-1" role="dialog">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Confirmar Exclusão</h5>
+                        <button type="button" class="btn-close" @onclick="() => mostrarModalConfirmacao = false" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <p>Tem certeza que deseja excluir o usuário <strong>@(usuarioParaExcluir?.Nome)</strong>?</p>
+                        <p class="text-danger">Esta ação não pode ser desfeita.</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" @onclick="() => mostrarModalConfirmacao = false">Cancelar</button>
+                        <button type="button" class="btn btn-danger" @onclick="ExcluirUsuario">Excluir</button>
+                    </div>
                 </div>
             </div>
         </div>
-    </NotAuthorized>
-</AuthorizeView>
+        <div class="modal-backdrop fade show"></div>
+    }
+</div>
 
 @code {
+    // Propriedades para listagem e filtro
     private List<UsuarioDTO> usuarios = new List<UsuarioDTO>();
     private List<UsuarioDTO> usuariosFiltrados = new List<UsuarioDTO>();
     private List<TipoUsuarioDTO> tiposUsuario = new List<TipoUsuarioDTO>();
     private List<TipoServicoDTO> tiposServico = new List<TipoServicoDTO>();
     private List<StatusDTO> statusList = new List<StatusDTO>();
-
     private string filtroNome = "";
     private int filtroTipoUsuario = 0;
     private int filtroStatus = 0;
-    
+    private bool carregando = true;
+
+    // Propriedades para edição
     private bool mostrarModalUsuario = false;
-    private bool mostrarModalConfirmacao = false;
     private UsuarioDTO usuarioEmEdicao = new UsuarioDTO();
-    private UsuarioDTO usuarioParaExcluir = null;
     private string novaSenha = "";
-    
+
+    // Propriedades para exclusão
+    private bool mostrarModalConfirmacao = false;
+    private UsuarioDTO usuarioParaExcluir = null;
+
+    // Propriedades para mensagens
     private string mensagemErro = null;
     private string mensagemSucesso = null;
+
+    // Propriedade para nome do usuário logado
+    private string userName = "Usuário";
 
     protected override async Task OnInitializedAsync()
     {
         try
         {
-            // Verificar autenticação (implementação real usaria JSInterop)
-            var token = await JSRuntime.InvokeAsync<string>("localStorage.getItem", "auth_token");
-            if (string.IsNullOrEmpty(token))
-            {
-                NavigationManager.NavigateTo("/login");
-                return;
-            }
+            // Verificar autenticação
+            await CheckAuthenticationStatus();
 
-            // Carregar dados
+            // Carregar dados iniciais
             await CarregarDados();
         }
         catch (Exception ex)
         {
             mensagemErro = $"Erro ao inicializar: {ex.Message}";
+            Console.WriteLine($"Erro ao inicializar: {ex}");
+        }
+        finally
+        {
+            carregando = false;
+        }
+    }
+
+    private async Task CheckAuthenticationStatus()
+    {
+        try
+        {
+            var token = await JSRuntime.InvokeAsync<string>("localStorage.getItem", "auth_token");
+            if (string.IsNullOrEmpty(token))
+            {
+                // Redirecionar para login se não estiver autenticado
+                NavigationManager.NavigateTo("/");
+                return;
+            }
+
+            // Configurar o token para requisições
+            Http.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
+
+            // Obter nome do usuário
+            userName = await JSRuntime.InvokeAsync<string>("localStorage.getItem", "user_name") ?? "Usuário";
+
+            Console.WriteLine("Usuário autenticado: " + userName);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Erro ao verificar autenticação: {ex.Message}");
+            NavigationManager.NavigateTo("/");
         }
     }
 
     private async Task CarregarDados()
     {
+        Console.WriteLine("Iniciando carregamento de dados...");
+        carregando = true;
+
         try
         {
-            usuarios = await Http.GetFromJsonAsync<List<UsuarioDTO>>("api/Usuario");
-            tiposUsuario = await Http.GetFromJsonAsync<List<TipoUsuarioDTO>>("api/TipoUsuario");
-            tiposServico = await Http.GetFromJsonAsync<List<TipoServicoDTO>>("api/TipoServico");
-            statusList = await Http.GetFromJsonAsync<List<StatusDTO>>("api/Status");
+            // Carregar usuários
+            Console.WriteLine("Carregando usuários...");
+            usuarios = await Http.GetFromJsonAsync<List<UsuarioDTO>>("https://localhost:7240/api/Usuario");
+            Console.WriteLine($"Usuários carregados: {usuarios.Count}");
 
+            // Aplicar filtros iniciais
             FiltrarUsuarios();
+
+            // Carregar tipos de usuário
+            Console.WriteLine("Carregando tipos de usuário...");
+            tiposUsuario = await Http.GetFromJsonAsync<List<TipoUsuarioDTO>>("https://localhost:7240/api/TipoUsuario");
+            Console.WriteLine($"Tipos de usuário carregados: {tiposUsuario.Count}");
+
+            // Carregar tipos de serviço
+            Console.WriteLine("Carregando tipos de serviço...");
+            tiposServico = await Http.GetFromJsonAsync<List<TipoServicoDTO>>("https://localhost:7240/api/TipoServico");
+            Console.WriteLine($"Tipos de serviço carregados: {tiposServico.Count}");
+
+            // Carregar status
+            Console.WriteLine("Carregando status...");
+            statusList = await Http.GetFromJsonAsync<List<StatusDTO>>("https://localhost:7240/api/Status");
+            Console.WriteLine($"Status carregados: {statusList.Count}");
         }
         catch (Exception ex)
         {
             mensagemErro = $"Erro ao carregar dados: {ex.Message}";
+            Console.WriteLine($"Erro ao carregar dados: {ex}");
+        }
+        finally
+        {
+            carregando = false;
         }
     }
 
     private void FiltrarUsuarios()
     {
-        usuariosFiltrados = usuarios.Where(u => 
+        Console.WriteLine($"Aplicando filtros: Nome='{filtroNome}', TipoUsuario={filtroTipoUsuario}, Status={filtroStatus}");
+
+        usuariosFiltrados = usuarios.Where(u =>
             (string.IsNullOrEmpty(filtroNome) || u.Nome.ToLower().Contains(filtroNome.ToLower())) &&
             (filtroTipoUsuario == 0 || u.TpUsuario == filtroTipoUsuario) &&
             (filtroStatus == 0 || u.CdStatus == filtroStatus)
         ).ToList();
+
+        Console.WriteLine($"Usuários filtrados: {usuariosFiltrados.Count}");
     }
 
     private void AbrirModalUsuario(UsuarioDTO usuario)
@@ -380,19 +418,18 @@
         {
             // Editar usuário existente
             usuarioEmEdicao = new UsuarioDTO
-                {
+            {
                 CdUsuario = usuario.CdUsuario,
                 Nome = usuario.Nome,
                 Email = usuario.Email,
                 Telefone = usuario.Telefone,
-                Password = usuario.Password, // Não será exibido, apenas mantido
                 TpUsuario = usuario.TpUsuario,
                 TpServico = usuario.TpServico,
                 CdStatus = usuario.CdStatus
             };
             novaSenha = "";
         }
-        
+
         mostrarModalUsuario = true;
     }
 
@@ -405,54 +442,60 @@
     {
         try
         {
-            // Validações básicas
-            if (string.IsNullOrEmpty(usuarioEmEdicao.Nome) || 
-                string.IsNullOrEmpty(usuarioEmEdicao.Email) || 
-                string.IsNullOrEmpty(usuarioEmEdicao.Telefone) ||
-                usuarioEmEdicao.TpUsuario == 0 ||
-                usuarioEmEdicao.TpServico == 0 ||
-                usuarioEmEdicao.CdStatus == 0)
+            // Validação básica
+            if (string.IsNullOrEmpty(usuarioEmEdicao.Nome) || string.IsNullOrEmpty(usuarioEmEdicao.Email))
             {
-                mensagemErro = "Preencha todos os campos obrigatórios.";
+                mensagemErro = "Nome e email são obrigatórios.";
                 return;
             }
 
+            if (usuarioEmEdicao.TpUsuario == 0 || usuarioEmEdicao.CdStatus == 0)
+            {
+                mensagemErro = "Tipo de usuário e status são obrigatórios.";
+                return;
+            }
+
+            // Se for novo usuário, senha é obrigatória
             if (usuarioEmEdicao.CdUsuario == 0 && string.IsNullOrEmpty(novaSenha))
             {
-                mensagemErro = "A senha é obrigatória para novos usuários.";
+                mensagemErro = "Senha é obrigatória para novos usuários.";
                 return;
             }
 
-            // Se for um novo usuário ou se a senha foi alterada
+            // Adicionar senha ao objeto se fornecida
             if (!string.IsNullOrEmpty(novaSenha))
             {
-                usuarioEmEdicao.Password = novaSenha; // Na implementação real, seria criptografada
+                usuarioEmEdicao.Password = novaSenha;
             }
 
-            // Salvar usuário (na implementação real, usaria POST ou PUT para a API)
+            // Enviar para API
+            HttpResponseMessage response;
             if (usuarioEmEdicao.CdUsuario == 0)
             {
-                // Novo usuário - simulação de POST
-                usuarioEmEdicao.CdUsuario = usuarios.Count > 0 ? usuarios.Max(u => u.CdUsuario) + 1 : 1;
-                usuarios.Add(usuarioEmEdicao);
-                mensagemSucesso = "Usuário criado com sucesso!";
+                // Novo usuário
+                response = await Http.PostAsJsonAsync("https://localhost:7240/api/Usuario", usuarioEmEdicao);
             }
             else
             {
-                // Atualizar usuário existente - simulação de PUT
-                var index = usuarios.FindIndex(u => u.CdUsuario == usuarioEmEdicao.CdUsuario);
-                if (index >= 0)
-                {
-                    usuarios[index] = usuarioEmEdicao;
-                    mensagemSucesso = "Usuário atualizado com sucesso!";
-                }
+                // Atualizar usuário existente
+                response = await Http.PutAsJsonAsync($"https://localhost:7240/api/Usuario/{usuarioEmEdicao.CdUsuario}", usuarioEmEdicao);
             }
 
-            // Atualizar lista filtrada
-            FiltrarUsuarios();
-            
-            // Fechar modal
-            mostrarModalUsuario = false;
+            if (response.IsSuccessStatusCode)
+            {
+                mensagemSucesso = usuarioEmEdicao.CdUsuario == 0
+                    ? "Usuário criado com sucesso!"
+                    : "Usuário atualizado com sucesso!";
+
+                // Recarregar dados
+                await CarregarDados();
+                mostrarModalUsuario = false;
+            }
+            else
+            {
+                var erro = await response.Content.ReadAsStringAsync();
+                mensagemErro = $"Erro ao salvar usuário: {response.StatusCode} - {erro}";
+            }
         }
         catch (Exception ex)
         {
@@ -466,29 +509,44 @@
         mostrarModalConfirmacao = true;
     }
 
-    private void ExcluirUsuario()
+    private async Task ExcluirUsuario()
     {
         try
         {
-            if (usuarioParaExcluir != null)
+            if (usuarioParaExcluir == null)
             {
-                // Remover usuário (na implementação real, usaria DELETE para a API)
-                usuarios.RemoveAll(u => u.CdUsuario == usuarioParaExcluir.CdUsuario);
-                
-                // Atualizar lista filtrada
-                FiltrarUsuarios();
-                
-                mensagemSucesso = "Usuário excluído com sucesso!";
+                return;
             }
-            
-            // Fechar modal
-            mostrarModalConfirmacao = false;
-            usuarioParaExcluir = null;
+
+            var response = await Http.DeleteAsync($"https://localhost:7240/api/Usuario/{usuarioParaExcluir.CdUsuario}");
+
+            if (response.IsSuccessStatusCode)
+            {
+                mensagemSucesso = "Usuário excluído com sucesso!";
+                await CarregarDados();
+            }
+            else
+            {
+                var erro = await response.Content.ReadAsStringAsync();
+                mensagemErro = $"Erro ao excluir usuário: {response.StatusCode} - {erro}";
+            }
         }
         catch (Exception ex)
         {
             mensagemErro = $"Erro ao excluir usuário: {ex.Message}";
         }
+        finally
+        {
+            mostrarModalConfirmacao = false;
+            usuarioParaExcluir = null;
+        }
+    }
+
+    private async Task Logout()
+    {
+        await JSRuntime.InvokeVoidAsync("localStorage.removeItem", "auth_token");
+        await JSRuntime.InvokeVoidAsync("localStorage.removeItem", "user_name");
+        NavigationManager.NavigateTo("/");
     }
 
     private string GetTipoUsuarioDescricao(int tipoUsuarioId)
@@ -524,13 +582,5 @@
             return $"({numeros.Substring(0, 2)}) {numeros.Substring(2, 4)}-{numeros.Substring(6)}";
         else
             return telefone; // Retorna original se não conseguir formatar
-    }
-
-    private async Task Logout()
-    {
-        await JSRuntime.InvokeVoidAsync("localStorage.removeItem", "auth_token");
-        await JSRuntime.InvokeVoidAsync("localStorage.removeItem", "user_name");
-        await JSRuntime.InvokeVoidAsync("localStorage.removeItem", "user_type");
-        NavigationManager.NavigateTo("/", true);
     }
 }

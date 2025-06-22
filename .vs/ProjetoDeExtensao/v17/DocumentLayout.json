@@ -3,24 +3,24 @@
   "WorkspaceRootPath": "D:\\_SISTEMAS\\_DOTNET\\_IFES\\projetodeextensao\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{A4086AC7-BBB3-4113-9544-C7E623D5672C}|ProjetoDeExtensao.BlazorApp\\ProjetoDeExtensao.BlazorApp\\ProjetoDeExtensao.BlazorApp.csproj|d:\\_sistemas\\_dotnet\\_ifes\\projetodeextensao\\projetodeextensao.blazorapp\\projetodeextensao.blazorapp\\controllers\\__autenticacao\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A4086AC7-BBB3-4113-9544-C7E623D5672C}|ProjetoDeExtensao.BlazorApp\\ProjetoDeExtensao.BlazorApp\\ProjetoDeExtensao.BlazorApp.csproj|solutionrelative:projetodeextensao.blazorapp\\projetodeextensao.blazorapp\\controllers\\__autenticacao\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{397568AA-990D-48D6-A4B1-29FF3D035302}|ProjetoDeExtensao.BlazorApp\\ProjetoDeExtensao.BlazorApp.Client\\ProjetoDeExtensao.BlazorApp.Client.csproj|d:\\_sistemas\\_dotnet\\_ifes\\projetodeextensao\\projetodeextensao.blazorapp\\projetodeextensao.blazorapp.client\\pages\\mainpage.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{397568AA-990D-48D6-A4B1-29FF3D035302}|ProjetoDeExtensao.BlazorApp\\ProjetoDeExtensao.BlazorApp.Client\\ProjetoDeExtensao.BlazorApp.Client.csproj|solutionrelative:projetodeextensao.blazorapp\\projetodeextensao.blazorapp.client\\pages\\mainpage.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
+      "AbsoluteMoniker": "D:0:0:{A4086AC7-BBB3-4113-9544-C7E623D5672C}|ProjetoDeExtensao.BlazorApp\\ProjetoDeExtensao.BlazorApp\\ProjetoDeExtensao.BlazorApp.csproj|d:\\_sistemas\\_dotnet\\_ifes\\projetodeextensao\\projetodeextensao.blazorapp\\projetodeextensao.blazorapp\\components\\app.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{A4086AC7-BBB3-4113-9544-C7E623D5672C}|ProjetoDeExtensao.BlazorApp\\ProjetoDeExtensao.BlazorApp\\ProjetoDeExtensao.BlazorApp.csproj|solutionrelative:projetodeextensao.blazorapp\\projetodeextensao.blazorapp\\components\\app.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A4086AC7-BBB3-4113-9544-C7E623D5672C}|ProjetoDeExtensao.BlazorApp\\ProjetoDeExtensao.BlazorApp\\ProjetoDeExtensao.BlazorApp.csproj|d:\\_sistemas\\_dotnet\\_ifes\\projetodeextensao\\projetodeextensao.blazorapp\\projetodeextensao.blazorapp\\controllers\\_sistema\\usuariocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A4086AC7-BBB3-4113-9544-C7E623D5672C}|ProjetoDeExtensao.BlazorApp\\ProjetoDeExtensao.BlazorApp\\ProjetoDeExtensao.BlazorApp.csproj|solutionrelative:projetodeextensao.blazorapp\\projetodeextensao.blazorapp\\controllers\\_sistema\\usuariocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{397568AA-990D-48D6-A4B1-29FF3D035302}|ProjetoDeExtensao.BlazorApp\\ProjetoDeExtensao.BlazorApp.Client\\ProjetoDeExtensao.BlazorApp.Client.csproj|d:\\_sistemas\\_dotnet\\_ifes\\projetodeextensao\\projetodeextensao.blazorapp\\projetodeextensao.blazorapp.client\\pages\\gerenciarusuarios.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{397568AA-990D-48D6-A4B1-29FF3D035302}|ProjetoDeExtensao.BlazorApp\\ProjetoDeExtensao.BlazorApp.Client\\ProjetoDeExtensao.BlazorApp.Client.csproj|solutionrelative:projetodeextensao.blazorapp\\projetodeextensao.blazorapp.client\\pages\\gerenciarusuarios.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A4086AC7-BBB3-4113-9544-C7E623D5672C}|ProjetoDeExtensao.BlazorApp\\ProjetoDeExtensao.BlazorApp\\ProjetoDeExtensao.BlazorApp.csproj|d:\\_sistemas\\_dotnet\\_ifes\\projetodeextensao\\projetodeextensao.blazorapp\\projetodeextensao.blazorapp\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A4086AC7-BBB3-4113-9544-C7E623D5672C}|ProjetoDeExtensao.BlazorApp\\ProjetoDeExtensao.BlazorApp\\ProjetoDeExtensao.BlazorApp.csproj|solutionrelative:projetodeextensao.blazorapp\\projetodeextensao.blazorapp\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{397568AA-990D-48D6-A4B1-29FF3D035302}|ProjetoDeExtensao.BlazorApp\\ProjetoDeExtensao.BlazorApp.Client\\ProjetoDeExtensao.BlazorApp.Client.csproj|d:\\_sistemas\\_dotnet\\_ifes\\projetodeextensao\\projetodeextensao.blazorapp\\projetodeextensao.blazorapp.client\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{397568AA-990D-48D6-A4B1-29FF3D035302}|ProjetoDeExtensao.BlazorApp\\ProjetoDeExtensao.BlazorApp.Client\\ProjetoDeExtensao.BlazorApp.Client.csproj|solutionrelative:projetodeextensao.blazorapp\\projetodeextensao.blazorapp.client\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A4086AC7-BBB3-4113-9544-C7E623D5672C}|ProjetoDeExtensao.BlazorApp\\ProjetoDeExtensao.BlazorApp\\ProjetoDeExtensao.BlazorApp.csproj|d:\\_sistemas\\_dotnet\\_ifes\\projetodeextensao\\projetodeextensao.blazorapp\\projetodeextensao.blazorapp\\_aplicacao\\gestordestatus.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A4086AC7-BBB3-4113-9544-C7E623D5672C}|ProjetoDeExtensao.BlazorApp\\ProjetoDeExtensao.BlazorApp\\ProjetoDeExtensao.BlazorApp.csproj|solutionrelative:projetodeextensao.blazorapp\\projetodeextensao.blazorapp\\_aplicacao\\gestordestatus.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -30,67 +30,70 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 4,
+          "SelectedChildIndex": 2,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "Program.cs",
-              "DocumentMoniker": "D:\\_SISTEMAS\\_DOTNET\\_IFES\\projetodeextensao\\ProjetoDeExtensao.BlazorApp\\ProjetoDeExtensao.BlazorApp.Client\\Program.cs",
-              "RelativeDocumentMoniker": "ProjetoDeExtensao.BlazorApp\\ProjetoDeExtensao.BlazorApp.Client\\Program.cs",
-              "ToolTip": "D:\\_SISTEMAS\\_DOTNET\\_IFES\\projetodeextensao\\ProjetoDeExtensao.BlazorApp\\ProjetoDeExtensao.BlazorApp.Client\\Program.cs",
-              "RelativeToolTip": "ProjetoDeExtensao.BlazorApp\\ProjetoDeExtensao.BlazorApp.Client\\Program.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAADAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-19T02:28:08.057Z"
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 2,
-              "Title": "Program.cs",
-              "DocumentMoniker": "D:\\_SISTEMAS\\_DOTNET\\_IFES\\projetodeextensao\\ProjetoDeExtensao.BlazorApp\\ProjetoDeExtensao.BlazorApp\\Program.cs",
-              "RelativeDocumentMoniker": "ProjetoDeExtensao.BlazorApp\\ProjetoDeExtensao.BlazorApp\\Program.cs",
-              "ToolTip": "D:\\_SISTEMAS\\_DOTNET\\_IFES\\projetodeextensao\\ProjetoDeExtensao.BlazorApp\\ProjetoDeExtensao.BlazorApp\\Program.cs",
-              "RelativeToolTip": "ProjetoDeExtensao.BlazorApp\\ProjetoDeExtensao.BlazorApp\\Program.cs",
-              "ViewState": "AgIAAEwAAAAAAAAAAAAmwFgAAAAhAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-19T02:05:42.484Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "GestorDeStatus.cs",
-              "DocumentMoniker": "D:\\_SISTEMAS\\_DOTNET\\_IFES\\projetodeextensao\\ProjetoDeExtensao.BlazorApp\\ProjetoDeExtensao.BlazorApp\\_APLICACAO\\GestorDeStatus.cs",
-              "RelativeDocumentMoniker": "ProjetoDeExtensao.BlazorApp\\ProjetoDeExtensao.BlazorApp\\_APLICACAO\\GestorDeStatus.cs",
-              "ToolTip": "D:\\_SISTEMAS\\_DOTNET\\_IFES\\projetodeextensao\\ProjetoDeExtensao.BlazorApp\\ProjetoDeExtensao.BlazorApp\\_APLICACAO\\GestorDeStatus.cs",
-              "RelativeToolTip": "ProjetoDeExtensao.BlazorApp\\ProjetoDeExtensao.BlazorApp\\_APLICACAO\\GestorDeStatus.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAcAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-19T01:58:36.966Z"
+              "Title": "App.razor",
+              "DocumentMoniker": "D:\\_SISTEMAS\\_DOTNET\\_IFES\\projetodeextensao\\ProjetoDeExtensao.BlazorApp\\ProjetoDeExtensao.BlazorApp\\Components\\App.razor",
+              "RelativeDocumentMoniker": "ProjetoDeExtensao.BlazorApp\\ProjetoDeExtensao.BlazorApp\\Components\\App.razor",
+              "ToolTip": "D:\\_SISTEMAS\\_DOTNET\\_IFES\\projetodeextensao\\ProjetoDeExtensao.BlazorApp\\ProjetoDeExtensao.BlazorApp\\Components\\App.razor",
+              "RelativeToolTip": "ProjetoDeExtensao.BlazorApp\\ProjetoDeExtensao.BlazorApp\\Components\\App.razor",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABcAAAAuAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-06-22T05:00:05.54Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "GerenciarUsuarios.razor",
-              "DocumentMoniker": "D:\\_SISTEMAS\\_DOTNET\\_IFES\\projetodeextensao\\ProjetoDeExtensao.BlazorApp\\ProjetoDeExtensao.BlazorApp.Client\\Pages\\GerenciarUsuarios.razor",
-              "RelativeDocumentMoniker": "ProjetoDeExtensao.BlazorApp\\ProjetoDeExtensao.BlazorApp.Client\\Pages\\GerenciarUsuarios.razor",
-              "ToolTip": "D:\\_SISTEMAS\\_DOTNET\\_IFES\\projetodeextensao\\ProjetoDeExtensao.BlazorApp\\ProjetoDeExtensao.BlazorApp.Client\\Pages\\GerenciarUsuarios.razor",
-              "RelativeToolTip": "ProjetoDeExtensao.BlazorApp\\ProjetoDeExtensao.BlazorApp.Client\\Pages\\GerenciarUsuarios.razor",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAQAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-05-19T01:38:30.882Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
               "Title": "MainPage.razor",
               "DocumentMoniker": "D:\\_SISTEMAS\\_DOTNET\\_IFES\\projetodeextensao\\ProjetoDeExtensao.BlazorApp\\ProjetoDeExtensao.BlazorApp.Client\\Pages\\MainPage.razor",
               "RelativeDocumentMoniker": "ProjetoDeExtensao.BlazorApp\\ProjetoDeExtensao.BlazorApp.Client\\Pages\\MainPage.razor",
               "ToolTip": "D:\\_SISTEMAS\\_DOTNET\\_IFES\\projetodeextensao\\ProjetoDeExtensao.BlazorApp\\ProjetoDeExtensao.BlazorApp.Client\\Pages\\MainPage.razor",
               "RelativeToolTip": "ProjetoDeExtensao.BlazorApp\\ProjetoDeExtensao.BlazorApp.Client\\Pages\\MainPage.razor",
-              "ViewState": "AgIAAKkAAAAAAAAAAAD4v64AAAAiAAAAAAAAAA==",
+              "ViewState": "AgIAABMBAAAAAAAAAAAWwCMBAAAYAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-05-19T01:22:44.22Z",
+              "WhenOpened": "2025-06-22T04:50:50.615Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "AuthController.cs",
+              "DocumentMoniker": "D:\\_SISTEMAS\\_DOTNET\\_IFES\\projetodeextensao\\ProjetoDeExtensao.BlazorApp\\ProjetoDeExtensao.BlazorApp\\Controllers\\__AUTENTICACAO\\AuthController.cs",
+              "RelativeDocumentMoniker": "ProjetoDeExtensao.BlazorApp\\ProjetoDeExtensao.BlazorApp\\Controllers\\__AUTENTICACAO\\AuthController.cs",
+              "ToolTip": "D:\\_SISTEMAS\\_DOTNET\\_IFES\\projetodeextensao\\ProjetoDeExtensao.BlazorApp\\ProjetoDeExtensao.BlazorApp\\Controllers\\__AUTENTICACAO\\AuthController.cs",
+              "RelativeToolTip": "ProjetoDeExtensao.BlazorApp\\ProjetoDeExtensao.BlazorApp\\Controllers\\__AUTENTICACAO\\AuthController.cs",
+              "ViewState": "AgIAAG4AAAAAAAAAAAAWwG0AAAAeAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-22T04:33:11.412Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "GerenciarUsuarios.razor",
+              "DocumentMoniker": "D:\\_SISTEMAS\\_DOTNET\\_IFES\\projetodeextensao\\ProjetoDeExtensao.BlazorApp\\ProjetoDeExtensao.BlazorApp.Client\\Pages\\GerenciarUsuarios.razor",
+              "RelativeDocumentMoniker": "ProjetoDeExtensao.BlazorApp\\ProjetoDeExtensao.BlazorApp.Client\\Pages\\GerenciarUsuarios.razor",
+              "ToolTip": "D:\\_SISTEMAS\\_DOTNET\\_IFES\\projetodeextensao\\ProjetoDeExtensao.BlazorApp\\ProjetoDeExtensao.BlazorApp.Client\\Pages\\GerenciarUsuarios.razor",
+              "RelativeToolTip": "ProjetoDeExtensao.BlazorApp\\ProjetoDeExtensao.BlazorApp.Client\\Pages\\GerenciarUsuarios.razor",
+              "ViewState": "AgIAANgBAAAAAAAAAAAWwOUBAABAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-06-22T03:49:35.989Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "UsuarioController.cs",
+              "DocumentMoniker": "D:\\_SISTEMAS\\_DOTNET\\_IFES\\projetodeextensao\\ProjetoDeExtensao.BlazorApp\\ProjetoDeExtensao.BlazorApp\\Controllers\\_SISTEMA\\UsuarioController.cs",
+              "RelativeDocumentMoniker": "ProjetoDeExtensao.BlazorApp\\ProjetoDeExtensao.BlazorApp\\Controllers\\_SISTEMA\\UsuarioController.cs",
+              "ToolTip": "D:\\_SISTEMAS\\_DOTNET\\_IFES\\projetodeextensao\\ProjetoDeExtensao.BlazorApp\\ProjetoDeExtensao.BlazorApp\\Controllers\\_SISTEMA\\UsuarioController.cs",
+              "RelativeToolTip": "ProjetoDeExtensao.BlazorApp\\ProjetoDeExtensao.BlazorApp\\Controllers\\_SISTEMA\\UsuarioController.cs",
+              "ViewState": "AgIAALcAAAAAAAAAAAD4v7QAAAACAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-22T03:40:32.529Z",
               "EditorCaption": ""
             }
           ]

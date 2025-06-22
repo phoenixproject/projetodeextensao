@@ -30,15 +30,15 @@ insert into status values ('inativo')
 
 -- Inserindo registros na tabela Usuário
 insert into usuario
-values ('phoenixproject.erp@gmail.com', '123', 'Paulo', '27-39933-2211', 1, 1, 1) -- Tipo Usuário: admin, Tipo de Usuário: default, Status: ativo
+values ('teste1@gmail.com', '123', 'Paulo', '27-39933-2211', 1, 1, 1) -- Tipo Usuário: admin, Tipo de Usuário: default, Status: ativo
 insert into usuario
-values ('herculezzz.rossi@gmail.com', '123', 'Hércules', '27-2311-2211', 1, 1, 1) -- Tipo Usuário: admin, Tipo de Usuário: default, Status: ativo
+values ('teste2@gmail.com', '123', 'Hércules', '27-2311-2211', 1, 1, 1) -- Tipo Usuário: admin, Tipo de Usuário: default, Status: ativo
 insert into usuario
-values ('jeansky20100@gmail.com', '123', 'Jean', '27-5654-2211', 1, 1, 1) -- Tipo Usuário: admin, Tipo de Usuário: default, Status: ativo
+values ('teste3@gmail.com', '123', 'Jean', '27-5654-2211', 1, 1, 1) -- Tipo Usuário: admin, Tipo de Usuário: default, Status: ativo
 insert into usuario
-values ('matheuslq18@gmail.com', '123', 'Matheus', '27-4232-2211', 1, 1, 1) -- Tipo Usuário: admin, Tipo de Usuário: default, Status: ativo
+values ('teste4@gmail.com', '123', 'Matheus', '27-4232-2211', 1, 1, 1) -- Tipo Usuário: admin, Tipo de Usuário: default, Status: ativo
 insert into usuario
-values ('thallysrafler@gmail.com', '123', 'Tallys', '27-3933-2211', 1, 1, 1) -- Tipo Usuário: admin, Tipo de Usuário: default, Status: ativo
+values ('teste5@gmail.com', '123', 'Tallys', '27-3933-2211', 1, 1, 1) -- Tipo Usuário: admin, Tipo de Usuário: default, Status: ativo
 insert into usuario
 values ('josesilva@gmail.com', '123', 'Jose Sílva', '27-1212-2211', 2, 2, 1) -- Tipo Usuário: usuario, Tipo de Usuário: Carpinteiro, Status: ativo
 insert into usuario

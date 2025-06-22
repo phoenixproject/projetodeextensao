@@ -21,7 +21,7 @@ namespace ProjetoDeExtensao.BlazorApp._APLICACAO
 			this.RepositorioDeUsuario = new RepositorioDeUsuario(projetoextensao);
 		}
 
-		public UsuarioDTO ConverterUsuarioParaFormatoDTO(Usuario usuario)
+		public UsuarioDTO ConverterUsuario(Usuario usuario)
 		{
 			UsuarioDTO usuario_dto = new UsuarioDTO();
 
@@ -37,24 +37,38 @@ namespace ProjetoDeExtensao.BlazorApp._APLICACAO
 			return usuario_dto;
 		}
 
+		public Usuario ConverterUsuario(UsuarioDTO usuarioDTO)
+		{
+			Usuario usuario = new Usuario();
+			usuario.CdUsuario = usuarioDTO.CdUsuario;
+			usuario.Email = usuarioDTO.Email;
+			usuario.Password = usuarioDTO.Password;
+			usuario.Nome = usuarioDTO.Nome;
+			usuario.Telefone = usuarioDTO.Telefone;
+			usuario.TpUsuario = usuarioDTO.TpUsuario;
+			usuario.TpServico = usuarioDTO.TpServico;
+			usuario.CdStatus = usuarioDTO.CdStatus;
+			return usuario;
+		}
+
 		public List<UsuarioDTO> ConverterListaDeUsuarioParaFormatoDTO(List<Usuario> listaDeUsuario)
 		{
 			List<UsuarioDTO> listaDeUsuarioDTO = new List<UsuarioDTO>();
 			foreach (var usuario in listaDeUsuario)
 			{
-				listaDeUsuarioDTO.Add(ConverterUsuarioParaFormatoDTO(usuario));
+				listaDeUsuarioDTO.Add(ConverterUsuario(usuario));
 			}
 			return listaDeUsuarioDTO;
 		}
 
-		public UsuarioDTO ObterUsuarioPorId(int id)
+		public Usuario ObterUsuarioPorId(int id)
 		{
-			return ConverterUsuarioParaFormatoDTO(RepositorioDeUsuario.ObterUsuarioPorId(id));
+			return RepositorioDeUsuario.ObterUsuarioPorId(id);
 		}
 
 		public UsuarioDTO ObterUsuarioPorEmailESenha(string email, string password)
 		{
-			return ConverterUsuarioParaFormatoDTO(RepositorioDeUsuario.ObterUsuarioPorEmailESenha(email, password));
+			return ConverterUsuario(RepositorioDeUsuario.ObterUsuarioPorEmailESenha(email, password));
 		}
 
 		public List<UsuarioDTO> ObterTodosOsUsuarios()
@@ -64,7 +78,12 @@ namespace ProjetoDeExtensao.BlazorApp._APLICACAO
 
 		public UsuarioDTO ObterUsuarioPorEmail(string email)
 		{
-			return ConverterUsuarioParaFormatoDTO(RepositorioDeUsuario.ObterUsuarioPorEmail(email));
+			return ConverterUsuario(RepositorioDeUsuario.ObterUsuarioPorEmail(email));
+		}
+
+		public Boolean VerificarSeExisteUsuarioPorEmailESenha(string email, string password)
+		{
+			return RepositorioDeUsuario.VerificarSeExisteUsuarioPorEmailESenha(email, password);
 		}
 
 		public bool VerificarSeUsuarioComMesmoEmailJaExiste(Usuario usuario)
@@ -72,9 +91,9 @@ namespace ProjetoDeExtensao.BlazorApp._APLICACAO
 			return RepositorioDeUsuario.VerificarSeUsuarioComMesmoEmailJaExiste(usuario);
 		}
 
-		public void InserirUsuario(Usuario usuario)
+		public Boolean InserirUsuario(Usuario usuario)
 		{
-			RepositorioDeUsuario.InserirUsuario(usuario);	
+			return RepositorioDeUsuario.InserirUsuario(usuario);	
 		}
 
 		public int BuscarQuantidadeRegistros()
@@ -87,9 +106,14 @@ namespace ProjetoDeExtensao.BlazorApp._APLICACAO
 			RepositorioDeUsuario.RemoverUsuario(usuario);
 		}
 
-		public void AtualizarUsuario(Usuario usuario)
+		public Boolean RemoverUsuario(int id)
 		{
-			RepositorioDeUsuario.AtualizarUsuario(usuario);
+			return RepositorioDeUsuario.RemoverUsuario(id);
+		}
+
+		public Boolean AtualizarUsuario(Usuario usuario)
+		{
+			return RepositorioDeUsuario.AtualizarUsuario(usuario);
 		}
 	}
 }

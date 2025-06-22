@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using ProjetoDeExtensao.BlazorApp._APLICACAO;
 using ProjetoDeExtensao.BlazorApp._MODEL._SISTEMAS;
 using ProjetoDeExtensao.Shared._MODEL;
@@ -23,6 +24,25 @@ namespace ProjetoDeExtensao.BlazorApp.Controllers._SISTEMA
 
 		[HttpGet]
 		public async Task<ActionResult<List<TipoServicoDTO>>> Get()
+		{
+			List<TipoServicoDTO> tipoServicos = new List<TipoServicoDTO>();
+
+			try
+			{
+				GestorDeTipoDeServico GestorDeTipoDeServico = new GestorDeTipoDeServico(_projetoextensao);
+				tipoServicos = GestorDeTipoDeServico.ObterTodosOsTiposDeServicos();
+				tipoServicos.RemoveAt(0);
+			}
+			catch (Exception ex)
+			{
+				return Ok(ex.Message.ToString());
+			}
+
+			return tipoServicos;
+		}
+
+		[HttpGet("Todos")]
+		public async Task<ActionResult<List<TipoServicoDTO>>> GetSemRestricoes()
 		{
 			List<TipoServicoDTO> tipoServicos = new List<TipoServicoDTO>();
 
